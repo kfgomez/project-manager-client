@@ -1,0 +1,8 @@
+.Panel{
+    width: 280px;
+    height: 100%;
+    float: right;
+    background-color: #ED6A5A;
+    margin: 0;
+    padding: 0;
+}

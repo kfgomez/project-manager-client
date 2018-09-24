@@ -1,0 +1,65 @@
+.Main{
+    padding: 0px;
+    margin: 0;
+    width: 400px;
+    height: 250px;
+    overflow: auto;
+    border: solid 1px #424C6B;
+    box-shadow: 3px 5px 1px 0px #E5E8EA;
+    background-color: #B1BCDB;
+    display: inline-block;
+}
+
+.ProjectsWrapper{
+    margin-top: 30px;
+}
+
+.Nav{
+    position: fixed;
+    background-color: #424C6B;
+    width: 401px;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+    margin: 0;
+    z-index: +1;
+    color: white;
+}
+
+.New{
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background-color: #ED6A5A;
+}
+.New:hover{
+    color: #ED6A5A;
+    background-color: white;
+    cursor: pointer;
+}
+.Title{
+    display: inline-block;
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 699px) {
+  .Main{
+    padding: 0px;
+    margin: 0;
+    width: 100%;
+}
+.ProjectsWrapper{
+    margin-top: 10px;
+}
+.Nav{
+    text-align:center;
+    width: 100%;
+    position: static;
+    background-color: #424C6B;
+    }
+}
+

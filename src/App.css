@@ -1,0 +1,10 @@
+.Main{
+    margin: auto;
+    width: 700px;
+}
+@media screen and (max-width: 699px) {
+  .Main{
+      margin: auto;
+      width: 100%;
+  }
+}

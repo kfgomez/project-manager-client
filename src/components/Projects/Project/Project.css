@@ -1,0 +1,33 @@
+.Project{
+    height: 150px;
+    width: 160px;
+    margin: 10px;
+    background: #FBFF9E;
+    float: left;
+    font-size: 11px;
+    text-align: left;
+    padding: 5px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 2px 2px 0px 0px #FFD621;
+}
+.Title{
+    display: inline-block;
+}
+.Points{
+    float: right;
+}
+.Delivery{
+    position: absolute; 
+    bottom: 0; 
+}
+.Description{
+    height: 100%;
+    padding-top: 25px;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 699px){
+    .Project{
+        width: 40%;
+    }
+}
