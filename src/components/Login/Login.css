@@ -1,0 +1,12 @@
+.LoginPanel{
+    margin: auto;
+    width: 50%;
+    height: 180px;
+    background-color: white;
+}
+.LoginPanel div{
+    text-align: center;
+}
+.Title{
+    color: #EE4223;
+}

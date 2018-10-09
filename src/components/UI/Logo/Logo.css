@@ -1,9 +1,7 @@
-.Logo img{
-    height: 70px;
+.Logo{
+  height: 100%;
+  margin: 0px;
 }
-
-@media screen and (max-width: 699px) {
-  .Logo img{
-      height: 100px;
-  }
+.Logo img{
+  height: 100%;
 }

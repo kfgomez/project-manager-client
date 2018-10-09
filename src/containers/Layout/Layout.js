@@ -1,62 +1,91 @@
 import React, { Component } from 'react';
-import Auth from '../../modules/Auth';
-import axios from 'axios';
-import Navigation from '../../components/Navigation/Navigation';
+import {withRouter, Route} from 'react-router-dom';
 import classes from './Layout.css';
+
+import { connect } from 'react-redux';
+import * as actionCreators from '../../store/actions/index.js';
+
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import SideDrawer from '../../components/UI/SideDrawer/SideDrawer';
+
+import Toolbar from '../../components/Toolbar/Toolbar';
+import Login from '../../components/Login/Login';
+import Dashboard from '../../containers/Dashboard/Dashboard';
 
 class Layout extends Component{
     state={
-        auth: Auth.isUserAuthenticated()
+        showBackdrop: false, 
+        showSideDrawer: false,}
+    
+    toggleBackdropHandler=()=>{
+        this.setState({
+            showBackdrop: false, 
+            showSideDrawer: false, 
+        });
     }
     
-    loginHandler =(e, data)=>{
-        axios.post('/login', data)
-        .then(res=>{
-            const token = res.data.token;
-            Auth.authenticateToken(token);
-            this.setState({
-                auth: Auth.isUserAuthenticated()
-            });
-        })
-        .catch(err=>{
-            if (err){
-                window.alert('unable to authenticate')}
+    toggleSideDrawerHandler=()=>{
+        this.setState({
+            backdrop: true,
+            showSideDrawer: true,
         });
+    }
+    
+    loginHandler=(e, data)=>{
+        this.props.authenticateUser(data);
         e.preventDefault();
     }
     
     logoutHandler=()=>{
         const confirmation = window.confirm("logout?");
         if (confirmation){
-            const token = Auth.getToken();
-            axios({
-                method: 'delete',
-                url: '/logout',
-                headers:{
-                    "Authorization": `Token ${token}`,
-                    "Content-Type": "application/json"}
-            }).then(res =>{
-                if (res){
-                    Auth.deauthenticateUser();
-                    this.setState({auth: Auth.isUserAuthenticated()});
-                }
-            }).catch(err => console.log(err));
+            this.props.deauthenticateUser();
         }else{
             return;
         }
     }
+    
     render(){
+        let backdrop=null;
+        let sideDrawer=null;
+        if(this.state.showBackdrop){
+          backdrop = <Backdrop 
+          toggleBackdropHandler={this.toggleBackdropHandler}/>;
+        }
+        if(this.state.showSideDrawer){
+          sideDrawer=<SideDrawer 
+          show={this.state.showSideDrawer}/>;
+        }
         return(
-            <div>
-            <Navigation 
-            className={classes.Navigation}
-            loginHandler={(e, data)=>this.loginHandler(e, data)}
-            auth={this.state.auth}
-            authCheckHandler={()=>this.authCheckHandler}
-            logoutHandler={()=>this.logoutHandler()}/>
+            <div className={classes.Layout}>
+            <Toolbar 
+            auth={this.props.auth}
+            logoutHandler={this.logoutHandler}
+            />
+            {backdrop}
+            {sideDrawer}
+            <Route exact path='/login' render={()=>(<Login 
+            loginHandler={this.loginHandler}/>)} />
+            <Route exact path='/dashboard' render={()=>(
+            <Dashboard />)}/>
             </div>
             );
     }
 }
 
-export default Layout;
+const mapStateToProps = (state)=>{
+    return{
+        auth: state.auth.isUserAuthenticated,
+        token: state.auth.token
+    };
+};
+
+const mapDispatchToProps = (dispatch)=>{
+    return{
+        isUserAuthenticated: ()=>dispatch(actionCreators.isUserAuthenticated()),
+        deauthenticateUser: ()=>dispatch(actionCreators.deauthenticateUser()),
+        authenticateUser: (data)=>dispatch(actionCreators.authenticateUser(data))
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout));

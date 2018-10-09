@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import classes from './NewProject.css';
+import ProjectForm from '../../../containers/ProjectForm/ProjectForm';
+const newProject=(props)=>{
+    return(
+        <div className={classes.FormPanel}>
+        <ProjectForm 
+        type='new'
+        submitProjectHandler={props.submitProjectHandler}
+        />
+        </div>
+        );
+};
 
-class NewProject extends Component{
-    render(){
-        return(
-            <div>
-            New Project
-            </div>
-            );
-    }
-}
-
-export default NewProject;
+export default newProject;

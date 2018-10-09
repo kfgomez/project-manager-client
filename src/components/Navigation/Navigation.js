@@ -1,57 +1,60 @@
-import React from 'react';
+import React  from 'react';
 import Login from '../Login/Login';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link, } from 'react-router-dom';
 import classes from './Navigation.css';
 import Logo from '../UI/Logo/Logo';
 import Dashboard from '../../containers/Dashboard/Dashboard';
 
-const navigation = (props) =>{
-    return(
+const navigation =props=>{
+
+        return(
         <div>
             <nav className={classes.Navigation}>
                 <ul>
-                <li>
+                <li className={classes.Logo}>
                 <Logo /></li>
                 {
                     props.auth
                     ?<li className={classes.Link}
-                    onClick={()=>props.logoutHandler()}
+                    onClick={props.logoutHandler}
                     >
-                    LOGOUT</li>
+                    logout</li>
                     :<li
                     className={classes.Link}
-                    ><Link to='/'>
-                    LOGIN</Link></li>
+                    ><Link to='/login'>
+                    login</Link></li>
                 }
+                <li className={classes.Link}>
+                <Link to='/my_account'>
+                my account</Link></li>
                 {
                     props.auth
-                    ?<li className={classes.Link}
+                    ?
+                    <li className={classes.Link}
                     ><Link to='/dashboard'>
-                    DASHBOARD</Link></li>
+                    dashboard</Link></li>
                     :null
                 }
+                <li className={classes.Link}>
+                <Link to='/stats'>
+                stats</Link></li>
                 </ul>
             </nav>
-            <div>
-            <Route exact path='/'
+            <div className={classes.LayoutWrapper}>
+            <Route exact path='/login'
             render={
-            ()=>(
-            props.auth
-            ?<Redirect to='/dashboard'/>
-            :<Login 
+            ()=>(<Login 
             loginHandler={(e, data)=>props.loginHandler(e, data)}
-            />
-            )
+            />)
             }/>
             <Route exact path='/dashboard'
             render={
-            ()=>(
-            props.auth
-            ?<Dashboard/>
-            :<Redirect to='/'/>)
+            ()=>(<Dashboard/>)
             }/>
             </div>
         </div>
         );
 };
+
 export default navigation;
+    

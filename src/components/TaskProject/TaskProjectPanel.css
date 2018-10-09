@@ -1,0 +1,9 @@
+.Panel{
+    background-color: #F5F5F5;
+    width: 450px;
+    height: 22%;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 5px;
+    box-sizing: border-box;
+}

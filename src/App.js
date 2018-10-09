@@ -7,11 +7,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className={classes.Main}>
+        <div className={classes.Aplication}>
         <Layout/>
         </div>
       </Router>
-
     );
   }
 }

@@ -1,3 +1,17 @@
+.Navigation{
+    background-color: #FFFFFF;
+    height: 75px;
+    box-shadow: 1px 1px 5px 1px #C0C0C0;
+}
+.LayoutWrapper{
+    background-color: #FFFFFF;
+    margin:0;
+    padding: 0;
+    height: 360px;
+    margin-top: 5px;
+    box-shadow: 1px 1px 3px 1px #B0B0B0;
+}
+
 .Navigation li{
     display: inline-block;
     box-sizing: border-box;
@@ -10,22 +24,20 @@
     padding: 0;
 }
 
-.Link{
+.Link {
     float: right;
-    margin-top: 25px;
-    text-decoration: none;
+    height: 50px;
+    margin-top: 20px;
 }
 
-.Navigation li:hover{
-    cursor: pointer;
-    background-color: #F0FFFF;
-    color: #ED4322;
-}
-.Navigation li a{
+.Link a{
     text-decoration: none;
-}
-.Navigation li a:visited{
     color: inherit;
+    height: 50%;
+}
+
+.Link:hover{
+    border-bottom: #ED4322 solid 2px;
 }
 
 @media screen and (max-width: 699px) {
@@ -33,7 +45,6 @@
     .Link{
     float: none;
     margin-top: 0px;
-    text-decoration: none;
     }
     .Navigation li{
     padding: 5px;

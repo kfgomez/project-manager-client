@@ -1,10 +1,7 @@
-.Main{
-    margin: auto;
-    width: 700px;
-}
-@media screen and (max-width: 699px) {
-  .Main{
-      margin: auto;
-      width: 100%;
-  }
+.Aplication{
+  height: 100%;
+  width: 99%;
+  max-width: 900px;
+  max-height: 401px;
+  margin: auto;
 }

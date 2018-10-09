@@ -1,0 +1,9 @@
+.Data {
+    background: #B2DFDB;
+    text-align: left;
+    width: 40%;
+    height: 10%;
+}
+.Data:hover{
+    background-color: #80CBC4;
+}

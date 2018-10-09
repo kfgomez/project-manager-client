@@ -1,8 +1,72 @@
 .Panel{
-    width: 280px;
-    height: 100%;
+    width: 50%;
+    height: 450px;
     float: right;
-    background-color: #ED6A5A;
+    padding: 5px;
+    margin: 0px;
+    overflow: auto;
+    background-color: white;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+.ProjectTitle{
+    font-size: 28px;
+    font-weight: bold;
+    color: #212121;
+}
+.CodePanel{
+    font-size: 8px;
+    color: #696969;
+}
+.CodePanel code{
+    color: 	#585858;
+}
+.Customer{
+    color: #696969;
+    font-weight: 600;
+}
+.Edit{
+    float: right;
+}
+.Description{
+    font-size: 16px;
+    color: #424242;
+}
+
+.DatesTable{
+    width: 100%;
+    text-align: center;
     margin: 0;
-    padding: 0;
+    margin-top: 35px;
+    border-collapse: collapse;
+}
+.DatesTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.DatesTable td{
+    border: 1px solid #ddd;
+    margin: 0;
+}
+
+.Panel::-webkit-scrollbar {
+    width: 2px;
+
+}
+
+/* Track */
+.Panel::-webkit-scrollbar-track {
+    background: transparent;
+    width: 1px;
+  
+}
+ 
+/* Handle */
+.Panel::-webkit-scrollbar-thumb {
+    background: #C8C8C8; 
+}
+
+/* Handle on hover */
+.Panel::-webkit-scrollbar-thumb:hover {
+    background: #80CBC4; 
 }

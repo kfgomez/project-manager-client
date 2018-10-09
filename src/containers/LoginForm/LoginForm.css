@@ -1,0 +1,10 @@
+.Form input{
+    margin-top: 10px;
+    border: 1px #262161 solid;
+    padding:5px; 
+}
+
+.SubmitInput{
+    background-color: #262161;
+    color: white;
+}
