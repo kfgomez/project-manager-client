@@ -7,7 +7,7 @@
 }
 .OptionBar{
     float: left;
-    background-color: #262161;
+    background-color: #2A3140;
     width: 15%;
     height: 100%;
     padding: 0px;
@@ -17,14 +17,16 @@
     text-align: center;
 }
 .Title{
-    margin: 0px;
-    padding:0px;
+    margin: 5px 0px;
     font-size: 22px;
-    color: #494554;
+    color: #0E121C;
+    display: inline-block;
+    padding: 0 5px;
+    box-sizing: border-box;
 }
 .ProjectsWrapper{
     width: 85%;
-    height: 88%;
+    height: 364px;
     overflow: auto;
     padding: 5px;
     box-sizing: border-box;
@@ -72,28 +74,5 @@
     cursor: pointer;
     box-shadow: 3px 0px 5px #A9A9A9;
 }
-.Title{
-    display: inline-block;
-    margin: 0;
-    padding: 0 10px;
-    box-sizing: border-box;
-}
 
-
-@media screen and (max-width: 699px) {
-  .Main{
-    padding: 0px;
-    margin: 0;
-    width: 100%;
-}
-.ProjectsWrapper{
-    margin-top: 10px;
-}
-.Options{
-    text-align:center;
-    width: 100%;
-    position: static;
-    background-color: #424C6B;
-    }
-}
 

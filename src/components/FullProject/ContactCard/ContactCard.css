@@ -1,0 +1,19 @@
+.ContactWrapper{
+    margin: auto;
+    width: 300px;
+    margin-top: 45px;
+    height: 70px;
+    border: 0.1px #E0E0E0 solid;
+    box-shadow: 2px 2px 0px #F9F7F7;
+    display: flex;
+    align-items: center;
+}
+
+.ContactWrapper div{
+    flex: 1;
+    font-size: 10px;
+}
+
+.Icon{
+    text-align: center;
+}

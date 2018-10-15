@@ -1,0 +1,92 @@
+.Panel{
+    width: 50%;
+    height: 395px;
+    float: right;
+    padding: 5px;
+    margin: 0px;
+    overflow: auto;
+    background-color: white;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.ProjectTitle{
+    margin-top: 5px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0E121C;
+}
+.CodePanel{
+    font-size: 8px;
+    color: #838383;
+    display: inline-block;
+}
+.CodePanel code{
+    color: 	#585858;
+    background-color: #F9F7F7;
+}
+
+.Customer{
+    margin-top: 1px;
+    color: #838383;
+    font-weight: 600;
+    font-size: 9px;
+}
+.Edit{
+    float: right;
+}
+.Edit:hover{
+    cursor: pointer;
+}
+.Description{
+    margin-top: 5px;
+    font-size: 12px;
+    color: #5F6570;
+}
+
+.DatesTable{
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-top: 35px;
+    border-collapse: collapse;
+}
+.DatesTable tr:nth-child(even){
+    background-color: #2A3140;
+    color: white;
+}
+.DatesTable td{
+    border: 1px solid #2A3140;
+    margin: 0;
+}
+
+.Panel::-webkit-scrollbar {
+    width: 2px;
+
+}
+/* Track */
+.Panel::-webkit-scrollbar-track {
+    background: transparent;
+    width: 1px;
+  
+}
+ 
+/* Handle */
+.Panel::-webkit-scrollbar-thumb {
+    background: #C8C8C8; 
+}
+
+/* Handle on hover */
+.Panel::-webkit-scrollbar-thumb:hover {
+    background: #80CBC4; 
+}
+.GaugePanel{
+    margin-top: 15px;
+    width: 100%;
+}
+.Gauge{
+    margin: auto;
+    text-align: center;
+    height: 172px;
+    width: 131px;
+}

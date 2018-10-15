@@ -13,7 +13,7 @@ const Projects =(props)=>{
             id={project.id}
             key={project.id}
             title={project.title}
-            status={project.status}
+            status={project.status.split('_').join(' ')}
             description={project.description}
             delivery_date={project.delivery_date}
             selectProjectHandler={props.selectProjectHandler}
@@ -30,9 +30,9 @@ const Projects =(props)=>{
                         />
                     </div>
                     <div className={classes.New} 
-                    onClick={props.newProjectHandler}>Create</div>
+                    onClick={props.newProjectHandler}>create</div>
                 </div>
-                <div className={classes.Title}>Projects</div>
+                <div className={classes.Title}><strong>Projects</strong></div>
                 <div 
                 className={classes.ProjectsWrapper}>
                 {component}</div>

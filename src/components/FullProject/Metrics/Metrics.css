@@ -1,0 +1,29 @@
+.Main{
+    width: 100%;
+    margin-top: 25px;
+    color: white;
+}
+.MetricsPanel{
+    display: flex;
+    width: 100%
+}
+.MetricsPanel div{
+    flex: 1;
+    align-items: center;
+}
+.Card{
+    text-align: center;
+    height: 55px;
+    margin: 5px;
+    background-color: #2A3140;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+.Selectable{
+    background-color: #D93240
+}
+.Selectable:hover{
+    background-color: #B5464F;
+    cursor: pointer;
+}
+

@@ -9,6 +9,9 @@ const toolbar =(props)=>{
             <div className={classes.NavigationLogo}>
             <Logo/>
             </div>
+            <h2>
+            Project Manager
+            </h2>
             <div className={classes.Spacer}/>
             <div className={classes.NavigationItems}>
                 <ul>

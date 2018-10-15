@@ -25,6 +25,7 @@ export const deauthenticateUser = ()=>{
                     "Authorization": `Token ${token}`,
                     "Content-Type": "application/json"}
             }).then(res =>{
+                window.alert('logged out')
                 dispatch(logout());
             }).catch(err => console.log(err)
         );

@@ -45,21 +45,6 @@ export const newProject=()=>{
     };
 };
 
-export const selectItem =(id, type)=>{
-    return{
-        type: actionTypes.SELECT_ITEM,
-        payload:{
-            id: id,
-            type: type,
-        }
-    };
-};
-
-export const resetSelection =()=>{
-    return{
-        type: actionTypes.RESET_SELECTION,
-    };
-};
 
 export const postProject=(token, data)=>{
     return dispatch=>{
@@ -70,7 +55,7 @@ export const postProject=(token, data)=>{
                 "Authorization": `Token ${token}`,
                 "Content-Type": "application/json"
             },
-            params: data
+            params:data
         }).then(res => {
             dispatch(getProjects(token, res.data.id));
         })
@@ -92,7 +77,6 @@ export const updateProject=(id, token, data)=>{
             },
             data
         }).then(res =>{
-            console.log('res received');
             dispatch(getProjects(token, id));
         }).catch(err=>{
             console.log(err, '[updateProject]');

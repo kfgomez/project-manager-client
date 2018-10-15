@@ -16,6 +16,12 @@ class Form extends Component{
     }
 
     render(){
+        let disabled = false;
+        let buttonClasses=classes.SubmitInput;
+        if (this.state.email === '' || this.state.password === ''){
+            disabled=true;
+            buttonClasses=[classes.SubmitInput, classes.Disabled].join('');
+        }
         return(
         <div className={classes.Form}>
         <form onSubmit={(e, data)=>this.props.loginHandler(e, this.state)}>
@@ -36,8 +42,9 @@ class Form extends Component{
         onChange={(e)=>this.changeHandler(e)}/>
         <br/>
         <input 
-        className={classes.SubmitInput}
-        type="submit" value="submit"/>
+        className={buttonClasses}
+        type="submit" value="submit"
+        disabled={disabled}/>
         </form>
         </div>);
     }

@@ -1,0 +1,34 @@
+.FormPanel{
+    margin: auto;
+    width: 90%;
+    height: 70px;
+}
+
+.FormPanel form{
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.FormPanel form input{
+    height: 20px;
+    flex: 1;
+    font-size: 10px;
+    margin: 10px;
+}
+
+.FormPanel form textarea{
+    flex: 1;
+    height: 40px;
+    font-size: 10px;
+    margin: 0px;
+}
+
+.SubmitButton{
+    color: white;
+    border: none;
+    background-color:#D93240;
+    padding-bottom: 20px!important;
+}

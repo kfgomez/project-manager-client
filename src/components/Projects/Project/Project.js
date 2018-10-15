@@ -8,7 +8,7 @@ const project =props=>{
         case 'open':
             statusClass=[classes.Status, classes.Open].join(' ');
             break;
-        case 'in_progress':
+        case 'in progress':
             statusClass=[classes.Status, classes.InProgress].join(' ');
             break;
         case 'completed':
@@ -41,10 +41,8 @@ const project =props=>{
         <div className={classes.Title}>
         {props.title}</div>
         <div className={classes.Description}>
-        {
-            props.description.slice(0, (props.description.length/2))
-        }
-        ....</div>
+        {props.description}
+        </div>
         </div>
         );
 };

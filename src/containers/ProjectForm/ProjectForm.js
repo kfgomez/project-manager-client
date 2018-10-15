@@ -35,7 +35,7 @@ class ProjectForm extends Component{
             valid: false,
         },{
             name: 'contact_phone',
-            type: 'number',
+            type: 'text',
             value: '',
             placeholder: 'contact phone#',
             valid: false,
@@ -44,6 +44,12 @@ class ProjectForm extends Component{
             type: 'email',
             value: '',
             placeholder: 'contact email',
+            valid: false,
+        },{
+            name: 'domain',
+            type: 'text',
+            value: '',
+            placeholder: 'domain',
             valid: false,
         }]
     }
@@ -70,7 +76,7 @@ class ProjectForm extends Component{
             inputElements: newInputArr,
         });
     }
-    
+
     submitFormHandler=(e)=>{
         const projectData={};
         this.state.inputElements.map(el=>{
@@ -92,7 +98,8 @@ class ProjectForm extends Component{
                 ...this.state.inputElements
                 .find(el=>(el.name===inputElement.name))};
             newObj.value=inputElement.value;
-            updatedState.push(newObj);
+            newObj.valid=inputElement.valid;
+            return(updatedState.push(newObj));
         });
         this.setState({
             inputElements: updatedState
@@ -101,9 +108,14 @@ class ProjectForm extends Component{
     
     render(){
         let cancelButton;
+        let disabledClass='';
         this.props.type==='edit'
-            ? cancelButton = <input type='button' value="cancel" onClick={(id)=>this.props.selectProjectHandler(this.props.id)}/>
-            : null;
+            ? cancelButton = <input 
+            type='button' 
+            value="cancel" 
+            className={classes.Cancel}
+            onClick={(id)=>this.props.selectProjectHandler(this.props.id)}/>
+            : cancelButton = null;
         const inputElements = this.state.inputElements.map((el, id)=>{
             const elArrPosition = id;
             return(
@@ -113,8 +125,15 @@ class ProjectForm extends Component{
             type={el.type}
             value={el.value}
             placeholder={el.placeholder}
+            className={el.valid
+                ?classes.Valid  
+                :classes.Invalid
+            }
             onChange={(e, id)=>this.changeHandler(e, elArrPosition)}/>);
             });
+        let isDisabled = this.state.inputElements.some(el=>{
+          return el.valid===false;
+        });
         return(
             <div className={classes.FormPanel}>
                 <h1>{this.props.type}</h1>
@@ -122,7 +141,13 @@ class ProjectForm extends Component{
                 <form 
                 onSubmit={this.submitFormHandler}>
                 {inputElements}
-                <input type='submit' value="save"/>
+                <input 
+                type='submit' 
+                value="save"
+                disabled={isDisabled}
+                className={isDisabled
+                ?classes.Disabled
+                :classes.Enabled}/>
                 {cancelButton}
                 </form>
                 </div>

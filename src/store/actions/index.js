@@ -9,8 +9,15 @@ export {
     selectProject,
     newProject,
     postProject,
-    selectItem,
-    resetSelection,
     editProject,
     updateProject,
 } from './projects';
+
+export {
+    postActivity,
+} from './activities';
+
+export {
+    updateTask,
+    postTask
+} from './tasks';

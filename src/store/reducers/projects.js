@@ -4,10 +4,6 @@ const initalState = {
     projects:[],
     selectedProjectId: 0,
     projectAction: 'new',
-    item: {
-        id: 0,
-        type: 'new',
-    },
 };
 
 const reducer = (state=initalState, action)=>{
@@ -35,24 +31,6 @@ const reducer = (state=initalState, action)=>{
                 ...state, 
                 selectedProjectId: 0,
                 projectAction: 'new',
-            };
-        case actionType.SELECT_ITEM:
-            return{
-                ...state, 
-                item:{
-                    ...state.item,
-                    id: action.payload.id,
-                    type: action.payload.type,
-                }
-            };
-        case actionType.RESET_SELECTION:
-            return{
-                ...state, 
-                item:{
-                    ...state.item, 
-                    id: 0, 
-                    type: 'new',
-                }
             };
         case actionType.EDIT_PROJECT:
             return{

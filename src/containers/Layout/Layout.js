@@ -17,18 +17,12 @@ class Layout extends Component{
         showBackdrop: false, 
         showSideDrawer: false,}
     
-    toggleBackdropHandler=()=>{
-        this.setState({
-            showBackdrop: false, 
-            showSideDrawer: false, 
-        });
+    hideBackdropHandler=()=>{
+        this.setState({showBackdrop:false});
     }
     
-    toggleSideDrawerHandler=()=>{
-        this.setState({
-            backdrop: true,
-            showSideDrawer: true,
-        });
+    showBackdropHandler=()=>{
+        this.setState({showBackdrop: true});
     }
     
     loginHandler=(e, data)=>{
@@ -49,8 +43,7 @@ class Layout extends Component{
         let backdrop=null;
         let sideDrawer=null;
         if(this.state.showBackdrop){
-          backdrop = <Backdrop 
-          toggleBackdropHandler={this.toggleBackdropHandler}/>;
+          backdrop = <Backdrop/>;
         }
         if(this.state.showSideDrawer){
           sideDrawer=<SideDrawer 
@@ -67,7 +60,9 @@ class Layout extends Component{
             <Route exact path='/login' render={()=>(<Login 
             loginHandler={this.loginHandler}/>)} />
             <Route exact path='/dashboard' render={()=>(
-            <Dashboard />)}/>
+            <Dashboard 
+            showBackdropHandler={this.showBackdropHandler}
+            hideBackdropHandler={this.hideBackdropHandler}/>)}/>
             </div>
             );
     }
