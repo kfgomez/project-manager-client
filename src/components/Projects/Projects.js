@@ -2,12 +2,13 @@ import React from 'react';
 import Project from './Project/Project';
 import classes from './Projects.css';
 import ProjectIcon from '../UI/Icons/Project';
+import Pagination from './Pagination/Pagination';
 
 const Projects =(props)=>{
-    let component = null;
-    props.projects.length === 0
-    ?component = <div className={classes.NoProjectsCreated}>No projects created yet :'(</div>
-    :component = props.projects.map((project)=>{
+    let component = <div className={classes.NoProjectsCreated}>No projects created yet :'(</div>
+    let paginationComponent=null;
+    if(props.projects.length !== 0){
+        component = props.projects.map((project)=>{
         return(
             <Project
             id={project.id}
@@ -18,9 +19,13 @@ const Projects =(props)=>{
             delivery_date={project.delivery_date}
             selectProjectHandler={props.selectProjectHandler}
             selectedProjectId={props.selectedProjectId}
-            />
-            );
-    });
+            />);
+        });
+        paginationComponent=<Pagination 
+                currentPage={props.currentPage}
+                getNextPage={props.getNextPage}
+                pages={props.pages}/>;
+    }
         return(
             <div className={classes.ProjectsPanel}>
                 <div 
@@ -32,10 +37,16 @@ const Projects =(props)=>{
                     <div className={classes.New} 
                     onClick={props.newProjectHandler}>create</div>
                 </div>
-                <div className={classes.Title}><strong>Projects</strong></div>
-                <div 
-                className={classes.ProjectsWrapper}>
-                {component}</div>
+                
+                <div className={classes.ProjectsWrapper}>
+                <strong>Projects</strong>
+                <div className={classes.Pagination}>
+                {paginationComponent}</div>
+                <div className={classes.ComponentWrapper}>
+                    {component}
+                </div>
+                </div>
+                
             </div>
             );
 };

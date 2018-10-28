@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter, Route} from 'react-router-dom';
+import {withRouter, Route, Redirect} from 'react-router-dom';
 import classes from './Layout.css';
 
 import { connect } from 'react-redux';
@@ -34,6 +34,7 @@ class Layout extends Component{
         const confirmation = window.confirm("logout?");
         if (confirmation){
             this.props.deauthenticateUser();
+            return <Redirect to='/login' />;
         }else{
             return;
         }
@@ -57,12 +58,25 @@ class Layout extends Component{
             />
             {backdrop}
             {sideDrawer}
-            <Route exact path='/login' render={()=>(<Login 
-            loginHandler={this.loginHandler}/>)} />
-            <Route exact path='/dashboard' render={()=>(
+            <Route exact path='/'
+            render={()=>(<Redirect to='/login'/>)}/>
+            <Route exact path='/login' 
+            render={
+            this.props.auth
+            ?()=>(<Redirect to='/dashboard'/>)
+            :()=>(<Login 
+            loginHandler={this.loginHandler}/>)
+            }/>
+            <Route exact path='/dashboard' 
+            render={
+            this.props.auth
+            ?()=>(
             <Dashboard 
             showBackdropHandler={this.showBackdropHandler}
-            hideBackdropHandler={this.hideBackdropHandler}/>)}/>
+            hideBackdropHandler={this.hideBackdropHandler}
+            auth={this.props.auth}/>)
+            :()=>(<Redirect to='/login'/>)
+            }/>
             </div>
             );
     }

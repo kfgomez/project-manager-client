@@ -1,17 +1,42 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
-export const getProjectsData = (projectsArray, selectedProject)=>{
+export const getProjectsData = (projectsArray, selectedProject,page)=>{
     return{
         type: actionTypes.GET_PROJECTS,
         payload:{
             projects: projectsArray,
             selectedProjectId: selectedProject,
+            currentPage: page,
         }
     };
 };
 
-export const getProjects =(token, selectedProjectId)=>{
+export const projectsLength=(len)=>{
+    return{
+        type: actionTypes.GET_PROJECTS_LENGTH,
+        payload:{
+            projectsLength: len
+        }
+    };
+};
+
+export const getProjectsLength=(token)=>{
+    return dispatch=>axios({
+        url:'/projects/projects_length',
+        method: 'get',
+        headers:{
+                "Authorization": `Token ${token}`,
+                "Content-Type": "application/json"
+        }
+    }).then(res=>{
+        dispatch(projectsLength(res.data));
+    }).catch(err=>{
+        window.alert(err);
+    });
+};
+
+export const getProjects =(token, selectedProjectId, currentPage)=>{
     return dispatch=>{
         axios({
             url:'/projects',
@@ -19,9 +44,13 @@ export const getProjects =(token, selectedProjectId)=>{
             headers:{
                 "Authorization": `Token ${token}`,
                 "Content-Type": "application/json"
-            }
+            },
+            params:{page: currentPage}
         }).then(res => {
-            dispatch(getProjectsData(res.data, selectedProjectId));
+            dispatch(getProjectsData(
+                res.data, 
+                selectedProjectId,
+                currentPage));
         })
         .catch(err => {
             console.log(err, '[IN:Dashboard.js] line:27');
@@ -57,7 +86,7 @@ export const postProject=(token, data)=>{
             },
             params:data
         }).then(res => {
-            dispatch(getProjects(token, res.data.id));
+            dispatch(getProjects(token, res.data.id, 1));
         })
         .catch(err => {
             console.log(err, '[IN:Dashboard.js] line:27');
@@ -66,7 +95,7 @@ export const postProject=(token, data)=>{
     };
 };
 
-export const updateProject=(id, token, data)=>{
+export const updateProject=(id, token, data, page)=>{
     return dispatch=>{
         axios({
             url: `/projects/${id}`,
@@ -77,7 +106,7 @@ export const updateProject=(id, token, data)=>{
             },
             data
         }).then(res =>{
-            dispatch(getProjects(token, id));
+            dispatch(getProjects(token, id, page));
         }).catch(err=>{
             console.log(err, '[updateProject]');
             window.alert(`Error while updating project, ${err}`);

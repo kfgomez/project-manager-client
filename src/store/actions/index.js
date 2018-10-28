@@ -11,6 +11,7 @@ export {
     postProject,
     editProject,
     updateProject,
+    getProjectsLength,
 } from './projects';
 
 export {

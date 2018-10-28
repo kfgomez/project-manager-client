@@ -7,3 +7,4 @@ export const NEW='NEW';
 export const POST_PROJECT='POST_PROJECT';
 export const EDIT_PROJECT='EDIT_PROJECT';
 export const UPDATE_PROJECT='UPDATE_PROJECT';
+export const GET_PROJECTS_LENGTH='GET_PROJECTS_LENGTH';

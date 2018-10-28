@@ -1,7 +1,7 @@
 import {getProjects} from './projects';
 import axios from 'axios';
 
-export const postActivity=(projectId, token, data)=>{
+export const postActivity=(projectId, token, data, page)=>{
     return dispatch=>{
         axios({
             url: `/projects/${projectId}/activities`,
@@ -12,10 +12,10 @@ export const postActivity=(projectId, token, data)=>{
             },
             data})
             .then(res=>{
-                dispatch(getProjects(token, projectId));
+                dispatch(getProjects(token, projectId, page));
             })
             .catch(err=>{
-                console.log(err);
+                window.alert(err);
             });
     };
 };

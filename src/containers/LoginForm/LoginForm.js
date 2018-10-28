@@ -43,7 +43,7 @@ class Form extends Component{
         <br/>
         <input 
         className={buttonClasses}
-        type="submit" value="submit"
+        type="submit" value="login"
         disabled={disabled}/>
         </form>
         </div>);

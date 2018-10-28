@@ -4,6 +4,8 @@ const initalState = {
     projects:[],
     selectedProjectId: 0,
     projectAction: 'new',
+    pages: 0,
+    currentPage:1,
 };
 
 const reducer = (state=initalState, action)=>{
@@ -19,6 +21,7 @@ const reducer = (state=initalState, action)=>{
                 projects: projects,
                 selectedProjectId: action.payload.selectedProjectId,
                 projectAction: projectAction,
+                currentPage: action.payload.currentPage,
             };
         case actionType.SELECT_PROJECT:
             return{
@@ -37,7 +40,12 @@ const reducer = (state=initalState, action)=>{
                 ...state, 
                 projectAction: 'edit'
             };
-        
+        case actionType.GET_PROJECTS_LENGTH:
+            let pages=Math.ceil(action.payload.projectsLength/5);
+            return{
+                ...state,
+                pages: pages
+            };
         default:
         return{
             ...state,

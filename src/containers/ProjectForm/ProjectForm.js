@@ -108,7 +108,6 @@ class ProjectForm extends Component{
     
     render(){
         let cancelButton;
-        let disabledClass='';
         this.props.type==='edit'
             ? cancelButton = <input 
             type='button' 
@@ -136,7 +135,7 @@ class ProjectForm extends Component{
         });
         return(
             <div className={classes.FormPanel}>
-                <h1>{this.props.type}</h1>
+                <h1>{this.props.type} project</h1>
                 <div>
                 <form 
                 onSubmit={this.submitFormHandler}>

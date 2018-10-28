@@ -14,7 +14,11 @@ class Dashboard extends Component{
     }
     componentDidMount(){
         if(this.props.selectedProjectId===0){
-            this.props.getProjects(this.props.token, 0);
+            this.props.getProjects(
+                this.props.token, 
+                this.props.selectedProjectId,
+                this.props.currentPage);
+            this.props.getProjectsLength(this.props.token);
         }
     }
     
@@ -37,7 +41,11 @@ class Dashboard extends Component{
     }
     
     updateProjectHandler=(e, data)=>{
-        this.props.updateProject(this.props.selectedProjectId, this.props.token, data);
+        this.props.updateProject(
+            this.props.selectedProjectId, 
+            this.props.token, 
+            data, 
+            this.props.currentPage);
         e.preventDefault();
     }
     
@@ -46,6 +54,7 @@ class Dashboard extends Component{
             this.props.selectedProjectId,
             this.props.token,
             {status: e.target.value},
+            this.props.currentPage
             );
     }
     
@@ -66,19 +75,27 @@ class Dashboard extends Component{
         this.props.postActivity(
             this.props.selectedProjectId,
             this.props.token,
-            state);
+            state, 
+            this.props.currentPage);
         e.preventDefault();
     }
     postTaskHandler=(e, data)=>{
         e.preventDefault();
-        this.props.postTask(this.props.selectedProjectId, this.props.token, data);
+        this.props.postTask(
+            this.props.selectedProjectId, 
+            this.props.token, 
+            data, 
+            this.props.currentPage);
     }
     updateTaskHandler=(data, id)=>{
         this.props.updateTask(
             this.props.selectedProjectId,
             id,
             this.props.token,
-            data);
+            data, this.props.currentPage);
+    }
+    getNextPage=(page)=>{
+        this.props.getProjects(this.props.token,0,page);
     }
     render(){
         const projects=this.props.projects;
@@ -125,7 +142,10 @@ class Dashboard extends Component{
             newProjectHandler={this.newProjectHandler}
             projects={this.props.projects}
             selectProjectHandler={this.selectProjectHandler}
-            selectedProjectId={this.props.selectedProjectId}/>
+            selectedProjectId={this.props.selectedProjectId}
+            getNextPage={this.getNextPage}
+            currentPage={this.props.currentPage}
+            pages={this.props.pages}/>
             <FullProject 
             projectData={projectData}
             submitProjectHandler={this.submitProjectHandler}
@@ -147,22 +167,25 @@ const mapStateToProps = (state)=>{
         projects: state.projects.projects,
         projectAction: state.projects.projectAction,
         selectedProjectId: state.projects.selectedProjectId,
+        pages: state.projects.pages,
+        currentPage: state.projects.currentPage,
     };
 };
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        getProjects:(token, id)=>dispatch(actionCreators.getProjects(token, id)),
+        getProjects:(token, id, currentPage)=>dispatch(actionCreators.getProjects(token, id, currentPage)),
         selectProject:(id)=>dispatch(actionCreators.selectProject(id)),
         newProject: ()=>dispatch(actionCreators.newProject()),
         postProject: (data, token)=>dispatch(actionCreators.postProject(data, token)),
         editProject: ()=>dispatch(actionCreators.editProject()),
-        updateProject: (id, token, data)=>dispatch(actionCreators.updateProject(id, token, data)),
+        updateProject: (id, token, data, page)=>dispatch(actionCreators.updateProject(id, token, data, page)),
+        getProjectsLength: (token)=>dispatch(actionCreators.getProjectsLength(token)),
         
-        postActivity: (projectId, token, data)=>dispatch(actionCreators.postActivity(projectId, token, data)),
+        postActivity: (projectId, token, data, page)=>dispatch(actionCreators.postActivity(projectId, token, data, page)),
         
-        postTask: (projectId, token, data)=>dispatch(actionCreators.postTask(projectId, token, data)),
-        updateTask: (projectId,taskId,token,data)=>dispatch(actionCreators.updateTask(projectId,taskId,token,data))
+        postTask: (projectId, token, data, page)=>dispatch(actionCreators.postTask(projectId, token, data, page)),
+        updateTask: (projectId,taskId,token,data, page)=>dispatch(actionCreators.updateTask(projectId,taskId,token,data, page))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

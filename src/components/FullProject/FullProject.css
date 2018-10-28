@@ -1,12 +1,15 @@
 .Panel{
     width: 50%;
-    height: 395px;
+    height: 99vh;
     float: right;
-    padding: 5px;
+    padding-top: 45px;
+    box-sizing: border-box;
     margin: 0px;
     overflow: auto;
     background-color: white;
-    margin-top: 5px;
+}
+.Project{
+    padding: 5px;
     box-sizing: border-box;
 }
 

@@ -20,7 +20,7 @@ const activity=props=>{
             </td>
             
             <td>
-            {props.activity.user_id}
+            {props.activity.username}
             </td>
         </tr>
         );

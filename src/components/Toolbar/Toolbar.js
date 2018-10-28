@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Toolbar.css';
 import { NavLink } from 'react-router-dom';
 import Logo from '../UI/Logo/Logo';
+import SideDrawerToggleButton from '../UI/SideDrawer/DrawerToggleButton';
 const toolbar =(props)=>{
     return (
     <div className={classes.Toolbar}>
@@ -10,7 +11,7 @@ const toolbar =(props)=>{
             <Logo/>
             </div>
             <h2>
-            Project Manager
+            PROJECT MANAGER
             </h2>
             <div className={classes.Spacer}/>
             <div className={classes.NavigationItems}>
@@ -39,9 +40,11 @@ const toolbar =(props)=>{
                     activeStyle={{fontWeight: 'bold'}} 
                     exact to='/login'>
                     login</NavLink></li>
-                    
                     }
                 </ul>
+            </div>
+            <div className={classes.DrawerToggleButton}>
+                    <SideDrawerToggleButton />
             </div>
         </nav>  
     </div>

@@ -4,7 +4,7 @@ import classes from './ActivityForm.css';
 class ActivityForm extends Component{
     state={
         description: '',
-        time_spent: null
+        time_spent: 0,
     }
     changeHandler=(e)=>{
         const name = e.target.name;
@@ -18,7 +18,7 @@ class ActivityForm extends Component{
         this.props.postActivityHandler(e, state);
         this.setState({
             description:'',
-            time_spent: null,
+            time_spent: 0,
         });
         
     }

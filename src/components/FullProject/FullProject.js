@@ -28,13 +28,13 @@ const fullProject = (props)=>{
             const dateCreated = project.created_at.slice(0, 10);
             const updatedAt = project.updated_at.slice(0, 10);
             component = 
-            <div>
+            <div className={classes.Project}>
                 <div className={classes.CodePanel}>share <code>
                 {project.code}</code>
                 </div>
                 <div 
                 className={classes.Edit}
-                onClick={props.editProjectHandler}>edit</div>
+                onClick={props.editProjectHandler}>Edit</div>
                 <div className={classes.ProjectTitle}>{project.title}</div>
                 <div className={classes.Customer}>{project.domain}</div>
                 <div className={classes.Description}>{project.description}</div>

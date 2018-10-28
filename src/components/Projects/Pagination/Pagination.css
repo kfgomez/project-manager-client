@@ -1,0 +1,19 @@
+.Round {
+    border-radius: 50%;
+    border: none;
+    margin-left: 5px;
+    background-color: #ddd;
+    color: gray;
+}
+.PaginationPanel span{
+    color: #2A3140;
+    margin-left: 5px;
+}
+.Enabled:hover{
+    background-color: #D93240;
+    cursor: pointer;
+    color: white;
+}
+.Enabled:focus{
+    outline: none;
+}
