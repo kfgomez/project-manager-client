@@ -59,11 +59,13 @@ export const getProjects =(token, selectedProjectId, currentPage)=>{
     };
 };
 
-export const selectProject=(id)=>{
+export const selectProject=(id, projectData)=>{
+    console.log("actions:",id, projectData);
     return{
         type: actionTypes.SELECT_PROJECT,
         payload:{
             id: id,
+            projectData: projectData
         }
     };
 };
@@ -106,11 +108,22 @@ export const updateProject=(id, token, data, page)=>{
             },
             data
         }).then(res =>{
+            dispatch(updateProjectData(res.data));
             dispatch(getProjects(token, id, page));
         }).catch(err=>{
             console.log(err, '[updateProject]');
             window.alert(`Error while updating project, ${err}`);
         });
+    };
+};
+
+export const updateProjectData=(projectData)=>{
+    console.log(projectData);
+    return {
+        type: actionTypes.UPDATE_PROJECT_DATA,
+        payload:{
+            updatedProject: projectData,
+        }
     };
 };
 

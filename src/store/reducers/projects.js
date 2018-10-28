@@ -6,6 +6,7 @@ const initalState = {
     projectAction: 'new',
     pages: 0,
     currentPage:1,
+    projectData: null,
 };
 
 const reducer = (state=initalState, action)=>{
@@ -27,7 +28,8 @@ const reducer = (state=initalState, action)=>{
             return{
                 ...state, 
                 selectedProjectId: action.payload.id,
-                projectAction: 'show'
+                projectAction: 'show',
+                projectData: action.payload.projectData
             };
         case actionType.NEW:
             return{
@@ -45,6 +47,13 @@ const reducer = (state=initalState, action)=>{
             return{
                 ...state,
                 pages: pages
+            };
+        case actionType.UPDATE_PROJECT_DATA:
+            return{
+                ...state,
+                projectData:{
+                    ...action.payload.updatedProject,
+                }
             };
         default:
         return{

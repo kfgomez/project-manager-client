@@ -23,7 +23,11 @@ class Dashboard extends Component{
     }
     
     selectProjectHandler =(id)=>{
-        this.props.selectProject(id);
+        const project=this.props.projects.find(el=>{
+            return el.id ===id;
+        });
+        this.props.selectProject(id, project);
+        console.log(id, project);
     }
     
     newProjectHandler=()=>{
@@ -41,12 +45,12 @@ class Dashboard extends Component{
     }
     
     updateProjectHandler=(e, data)=>{
+        e.preventDefault();
         this.props.updateProject(
             this.props.selectedProjectId, 
             this.props.token, 
             data, 
             this.props.currentPage);
-        e.preventDefault();
     }
     
     updateStatusHandler=(e)=>{
@@ -95,7 +99,7 @@ class Dashboard extends Component{
             data, this.props.currentPage);
     }
     getNextPage=(page)=>{
-        this.props.getProjects(this.props.token,0,page);
+        this.props.getProjects(this.props.token,this.props.selectedProjectId,page);
     }
     render(){
         const projects=this.props.projects;
@@ -106,14 +110,10 @@ class Dashboard extends Component{
         let backdropPanel=null;
         let panelData=null;
         if(this.props.selectedProjectId !== 0){
-            project = projects.find(el =>{
-                return el.id === this.props.selectedProjectId;
-            });
-            projectData = project;
-            activities = project.activities;
-            tasks = project.tasks;
+            projectData = this.props.projectData;
+            activities = this.props.projectData.activities;
+            tasks = this.props.projectData.tasks;
         }
-        
         if(this.state.panelType==='tasks'){
             panelData=tasks;
         }
@@ -169,21 +169,20 @@ const mapStateToProps = (state)=>{
         selectedProjectId: state.projects.selectedProjectId,
         pages: state.projects.pages,
         currentPage: state.projects.currentPage,
+        projectData: state.projects.projectData,
     };
 };
 
 const mapDispatchToProps=(dispatch)=>{
     return{
         getProjects:(token, id, currentPage)=>dispatch(actionCreators.getProjects(token, id, currentPage)),
-        selectProject:(id)=>dispatch(actionCreators.selectProject(id)),
+        selectProject:(id, projectData)=>dispatch(actionCreators.selectProject(id, projectData)),
         newProject: ()=>dispatch(actionCreators.newProject()),
         postProject: (data, token)=>dispatch(actionCreators.postProject(data, token)),
         editProject: ()=>dispatch(actionCreators.editProject()),
         updateProject: (id, token, data, page)=>dispatch(actionCreators.updateProject(id, token, data, page)),
         getProjectsLength: (token)=>dispatch(actionCreators.getProjectsLength(token)),
-        
         postActivity: (projectId, token, data, page)=>dispatch(actionCreators.postActivity(projectId, token, data, page)),
-        
         postTask: (projectId, token, data, page)=>dispatch(actionCreators.postTask(projectId, token, data, page)),
         updateTask: (projectId,taskId,token,data, page)=>dispatch(actionCreators.updateTask(projectId,taskId,token,data, page))
     };
