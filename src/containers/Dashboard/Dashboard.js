@@ -27,7 +27,6 @@ class Dashboard extends Component{
             return el.id ===id;
         });
         this.props.selectProject(id, project);
-        console.log(id, project);
     }
     
     newProjectHandler=()=>{
@@ -102,9 +101,7 @@ class Dashboard extends Component{
         this.props.getProjects(this.props.token,this.props.selectedProjectId,page);
     }
     render(){
-        const projects=this.props.projects;
         let projectData=null;
-        let project=null;
         let tasks=null;
         let activities=null;
         let backdropPanel=null;

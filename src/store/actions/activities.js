@@ -1,4 +1,4 @@
-import {getProjects} from './projects';
+import {getProjects, getProject} from './projects';
 import axios from 'axios';
 
 export const postActivity=(projectId, token, data, page)=>{
@@ -12,6 +12,7 @@ export const postActivity=(projectId, token, data, page)=>{
             },
             data})
             .then(res=>{
+                dispatch(getProject(token, projectId));
                 dispatch(getProjects(token, projectId, page));
             })
             .catch(err=>{

@@ -60,7 +60,6 @@ export const getProjects =(token, selectedProjectId, currentPage)=>{
 };
 
 export const selectProject=(id, projectData)=>{
-    console.log("actions:",id, projectData);
     return{
         type: actionTypes.SELECT_PROJECT,
         payload:{
@@ -96,7 +95,22 @@ export const postProject=(token, data)=>{
         });
     };
 };
-
+export const getProject=(token, id)=>{
+    return dispatch=>{
+        axios({
+            url:`/projects/${id}`,
+            method: 'get',
+            headers:{
+                "Authorization": `Token ${token}`,
+                "Content-Type": "application/json",
+            }
+        }).then(res=>{
+            dispatch(updateProjectData(res.data));
+        }).catch(err=>{
+            window.alert(err);
+        });
+    };
+};
 export const updateProject=(id, token, data, page)=>{
     return dispatch=>{
         axios({
@@ -118,7 +132,6 @@ export const updateProject=(id, token, data, page)=>{
 };
 
 export const updateProjectData=(projectData)=>{
-    console.log(projectData);
     return {
         type: actionTypes.UPDATE_PROJECT_DATA,
         payload:{
