@@ -11,6 +11,8 @@ class Dashboard extends Component{
     state={
         showPanel: false, 
         panelType: null,
+        selectedTaskData: null,
+        taskFormType: 'new',
     }
     componentDidMount(){
         if(this.props.selectedProjectId===0){
@@ -82,23 +84,43 @@ class Dashboard extends Component{
             this.props.currentPage);
         e.preventDefault();
     }
-    postTaskHandler=(e, data)=>{
-        e.preventDefault();
+    postTaskHandler=(data)=>{
         this.props.postTask(
             this.props.selectedProjectId, 
             this.props.token, 
             data, 
             this.props.currentPage);
+        this.resetTaskAction();
     }
     updateTaskHandler=(data, id)=>{
         this.props.updateTask(
             this.props.selectedProjectId,
             id,
             this.props.token,
-            data, this.props.currentPage);
+            data, 
+            this.props.currentPage);
     }
     getNextPage=(page)=>{
         this.props.getProjects(this.props.token,this.props.selectedProjectId,page);
+    }
+    selectTaskHandler=(data)=>{
+        this.setState({
+            selectedTaskData: data,
+            taskFormType: 'edit',
+        });
+    }
+    resetTaskAction=()=>{
+        const task={
+            description: '',
+            difficulty: '',
+            source: '',
+            id: 0,
+            status: '',
+        };
+        this.setState({
+            taskFormType: 'new',
+            selectedTaskData: task,
+        });
     }
     render(){
         let projectData=null;
@@ -129,6 +151,10 @@ class Dashboard extends Component{
             updateTaskHandler={this.updateTaskHandler}
             postActivityHandler={this.postActivityHandler}
             postTaskHandler={this.postTaskHandler}
+            selectTaskHandler={this.selectTaskHandler}
+            selectedTaskData={this.state.selectedTaskData}
+            taskFormType={this.state.taskFormType}
+            resetTaskAction={this.resetTaskAction}
             />
             </BackdropPanel>;
         }

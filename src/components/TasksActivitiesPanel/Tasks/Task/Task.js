@@ -1,25 +1,36 @@
 import React from 'react';
 import StatusMenu from './StatusMenu/StatusMenu';
+import classes from './Task.css';
+
 const task=(props)=>{
+    const taskData={
+        description: props.task.description,
+        source: props.task.source,
+        difficulty: props.task.difficulty,
+        status: props.task.status,
+        id: props.task.id
+    };
     return(
-    <tr>
+    <tr 
+    onClick={(data)=>props.selectTaskHandler(taskData)}
+    className={classes.DataRow}>
         <td>
-        {props.task.description}
+        {taskData.description}
         </td>
         
         <td>
-        {props.task.source}
+        {taskData.source}
         </td>
         
         <td>
-        {props.task.difficulty}
+        {taskData.difficulty}
         </td>
         
         <td>
         <StatusMenu
-        value={props.task.status}
+        value={taskData.status}
         upateTaskHandler={props.updateTaskHandler}
-        id={props.task.id}/>
+        id={taskData.id}/>
         </td>
     </tr>
     );

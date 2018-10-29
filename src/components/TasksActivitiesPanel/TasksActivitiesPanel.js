@@ -10,7 +10,11 @@ const tasksActivitiesPanel=(props)=>{
             component=<Tasks 
             data={props.panelData}
             postTaskHandler={props.postTaskHandler}
-            updateTaskHandler={props.updateTaskHandler}/>;
+            updateTaskHandler={props.updateTaskHandler}
+            selectTaskHandler={props.selectTaskHandler}
+            taskFormType={props.taskFormType}
+            selectedTaskData={props.selectedTaskData}
+            resetTaskAction={props.resetTaskAction}/>;
             break;
         case 'activities':
             component=<Activities 

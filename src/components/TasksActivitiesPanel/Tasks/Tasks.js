@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Tasks.css';
 import Task from './Task/Task';
 import TaskForm from '../../../containers/TaskForm/TaskForm';
@@ -9,7 +9,8 @@ const tasks=(props)=>{
             <Task 
             key={task.id}
             task={task}
-            updateTaskHandler={props.updateTaskHandler}/>
+            updateTaskHandler={props.updateTaskHandler}
+            selectTaskHandler={props.selectTaskHandler}/>
             );
     });
     return(
@@ -29,7 +30,11 @@ const tasks=(props)=>{
         </table>
         </div>
         <TaskForm 
-        postTaskHandler={props.postTaskHandler}/>
+        type={props.taskFormType}
+        task={props.selectedTaskData}
+        resetTaskAction={props.resetTaskAction}
+        postTaskHandler={props.postTaskHandler}
+        updateTaskHandler={props.updateTaskHandler}/>
         </div>
         );
 };
