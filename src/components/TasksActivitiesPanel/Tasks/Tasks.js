@@ -10,7 +10,8 @@ const tasks=(props)=>{
             key={task.id}
             task={task}
             updateTaskHandler={props.updateTaskHandler}
-            selectTaskHandler={props.selectTaskHandler}/>
+            selectTaskHandler={props.selectTaskHandler}
+            deleteTaskHandler={props.deleteTaskHandler}/>
             );
     });
     return(
@@ -24,6 +25,7 @@ const tasks=(props)=>{
             <th>source</th>
             <th>difficulty</th>
             <th>status</th>
+            <th> </th>
             </tr>
             {tasks}
         </tbody>

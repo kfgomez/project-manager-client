@@ -14,7 +14,8 @@ const tasksActivitiesPanel=(props)=>{
             selectTaskHandler={props.selectTaskHandler}
             taskFormType={props.taskFormType}
             selectedTaskData={props.selectedTaskData}
-            resetTaskAction={props.resetTaskAction}/>;
+            resetTaskAction={props.resetTaskAction}
+            deleteTaskHandler={props.deleteTaskHandler}/>;
             break;
         case 'activities':
             component=<Activities 

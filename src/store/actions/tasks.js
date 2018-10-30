@@ -38,3 +38,20 @@ export const postTask=(projectId,token, data, page)=>{
         });
     };
 };
+export const deleteTask=(id, projectId, token, page)=>{
+    return dispatch=>{
+        axios({
+            url: `/projects/${projectId}/tasks/${id}`,
+            method: 'delete',
+            headers:{
+                "Authorization": `Token ${token}`,
+                "Content-Type": "application/json"
+            }
+        }).then(res=>{
+            dispatch(getProject(token, projectId));
+            dispatch(getProjects(token, projectId, page));
+        }).catch(err=>{
+            window.alert(err);
+        });
+    };
+};

@@ -11,7 +11,7 @@ class Dashboard extends Component{
     state={
         showPanel: false, 
         panelType: null,
-        selectedTaskData: null,
+        selectedTaskData: {id: 0},
         taskFormType: 'new',
     }
     componentDidMount(){
@@ -74,6 +74,7 @@ class Dashboard extends Component{
     closePanelHandler=()=>{
         this.setState({showPanel: false});
         this.props.hideBackdropHandler();
+        this.resetTaskAction();
     }
     
     postActivityHandler=(e, state)=>{
@@ -122,6 +123,16 @@ class Dashboard extends Component{
             selectedTaskData: task,
         });
     }
+    deleteTaskHandler=(id)=>{
+        const confirmation = window
+        .confirm('deletion cannot be undone, you sure you want to continue?');
+        if(confirmation){
+            if(id === this.state.selectedTaskData.id){
+                this.resetTaskAction();
+            }
+            this.props.deleteTask(id, this.props.selectedProjectId, this.props.token, this.props.currentPage);
+        }
+    }
     render(){
         let projectData=null;
         let tasks=null;
@@ -155,6 +166,7 @@ class Dashboard extends Component{
             selectedTaskData={this.state.selectedTaskData}
             taskFormType={this.state.taskFormType}
             resetTaskAction={this.resetTaskAction}
+            deleteTaskHandler={this.deleteTaskHandler}
             />
             </BackdropPanel>;
         }
@@ -207,7 +219,8 @@ const mapDispatchToProps=(dispatch)=>{
         getProjectsLength: (token)=>dispatch(actionCreators.getProjectsLength(token)),
         postActivity: (projectId, token, data, page)=>dispatch(actionCreators.postActivity(projectId, token, data, page)),
         postTask: (projectId, token, data, page)=>dispatch(actionCreators.postTask(projectId, token, data, page)),
-        updateTask: (projectId,taskId,token,data, page)=>dispatch(actionCreators.updateTask(projectId,taskId,token,data, page))
+        updateTask: (projectId,taskId,token,data, page)=>dispatch(actionCreators.updateTask(projectId,taskId,token,data, page)),
+        deleteTask: (taskId, projectId, token, page)=>dispatch(actionCreators.deleteTask(taskId, projectId, token, page))
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

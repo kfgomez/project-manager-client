@@ -12,7 +12,6 @@ const task=(props)=>{
     };
     return(
     <tr 
-    onClick={(data)=>props.selectTaskHandler(taskData)}
     className={classes.DataRow}>
         <td>
         {taskData.description}
@@ -31,6 +30,12 @@ const task=(props)=>{
         value={taskData.status}
         upateTaskHandler={props.updateTaskHandler}
         id={taskData.id}/>
+        </td>
+        <td>
+        <span 
+        onClick={(data)=>props.selectTaskHandler(taskData)}
+        >Edit</span> <span
+        onClick={(id)=>props.deleteTaskHandler(taskData.id)}>Delete</span>
         </td>
     </tr>
     );

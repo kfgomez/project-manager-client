@@ -20,5 +20,6 @@ export {
 
 export {
     updateTask,
-    postTask
+    postTask,
+    deleteTask
 } from './tasks';
