@@ -29,7 +29,7 @@ export const postTask=(projectId,token, data, page)=>{
                 "Authorization": `Token ${token}`,
                 "Content-Type": "application/json"
             },
-            data,
+            params: data,
         }).then(res=>{
             dispatch(getProject(token, projectId));
             dispatch(getProjects(token, projectId, page));

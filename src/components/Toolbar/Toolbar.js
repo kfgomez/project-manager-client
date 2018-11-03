@@ -10,9 +10,9 @@ const toolbar =(props)=>{
             <div className={classes.NavigationLogo}>
             <Logo/>
             </div>
-            <h2>
+            <h3>
             PROJECT MANAGER
-            </h2>
+            </h3>
             <div className={classes.Spacer}/>
             <div className={classes.NavigationItems}>
                 <ul>
@@ -44,7 +44,8 @@ const toolbar =(props)=>{
                 </ul>
             </div>
             <div className={classes.DrawerToggleButton}>
-                    <SideDrawerToggleButton />
+                    <SideDrawerToggleButton 
+                    showSideDrawerHandler={props.showSideDrawerHandler}/>
             </div>
         </nav>  
     </div>

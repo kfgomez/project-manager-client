@@ -21,7 +21,7 @@ const fullProject = (props)=>{
             component = <EditProject 
             updateProjectHandler={props.updateProjectHandler}
             projectData={props.projectData}
-            selectProjectHandler={props.selectProjectHandler}/>;
+            cancelEditHandler={props.cancelEditHandler}/>;
             break;
         case 'show':
             project= props.projectData;
@@ -87,6 +87,7 @@ const fullProject = (props)=>{
     
         return(
             <div className={classes.Panel}>
+            <div className={classes.ToolbarSpacer}/>
             {component}
             </div>
         );

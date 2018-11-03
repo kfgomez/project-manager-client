@@ -6,13 +6,13 @@ class ProjectForm extends Component{
             name: 'title',
             type: 'text',
             value: '',
-            placeholder: 'project title...',
+            placeholder: 'project title',
             valid: false,
         },{
             name: 'description',
             type: 'text',
             value: '',
-            placeholder: 'description...',
+            placeholder: 'description',
             valid: false,
         },
         {
@@ -113,7 +113,7 @@ class ProjectForm extends Component{
             type='button' 
             value="cancel" 
             className={classes.Cancel}
-            onClick={(id)=>this.props.selectProjectHandler(this.props.id)}/>
+            onClick={this.props.cancelEditHandler}/>
             : cancelButton = null;
         const inputElements = this.state.inputElements.map((el, id)=>{
             const elArrPosition = id;
@@ -135,8 +135,7 @@ class ProjectForm extends Component{
         });
         return(
             <div className={classes.FormPanel}>
-                <h1>{this.props.type} project</h1>
-                <div>
+                <div className={classes.Title}><strong>{this.props.type} project</strong></div>
                 <form 
                 onSubmit={this.submitFormHandler}>
                 {inputElements}
@@ -149,7 +148,6 @@ class ProjectForm extends Component{
                 :classes.Enabled}/>
                 {cancelButton}
                 </form>
-                </div>
             </div>
             );
     }

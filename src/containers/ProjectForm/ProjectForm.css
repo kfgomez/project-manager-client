@@ -1,6 +1,13 @@
+.Title{
+    font-size: 35px;
+    margin-top: 1px;
+}
 .FormPanel{
+    margin: 0;
     padding: 5px;
     box-sizing: border-box;
+    height: 100%;
+    background-color: white;
 }
 .FormPanel input[type=text], .FormPanel input[type=email], 
 .FormPanel input[type=date], .FormPanel input[type=number]{
@@ -17,11 +24,14 @@
     width: 100%;
     background-color: #D93240;
     color: white;
-    padding: 14px 20px;
+    padding: 12px 20px;
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.FormPanel input:focus{
+    outline: none;
 }
 
 .Disabled{
@@ -31,3 +41,32 @@
 .Invalid{
     border-color: red !important;
 }
+@media(min-width: 800px){
+    .FormPanel{
+        height: 97.5%;
+    }
+    .Title{
+        font-size: 20px;
+    }
+    .FormPanel input[type=text], .FormPanel input[type=email], 
+    .FormPanel input[type=date], .FormPanel input[type=number]{
+        width: 100%;
+        padding: 5px 5px;
+        margin: 5px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .FormPanel input[type=submit], .Cancel {
+    width: 100%;
+    background-color: #D93240;
+    color: white;
+    padding: 5px 5px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+}
+

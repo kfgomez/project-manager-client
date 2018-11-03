@@ -28,25 +28,27 @@ const Projects =(props)=>{
     }
         return(
             <div className={classes.ProjectsPanel}>
+            <div className={classes.ToolbarSpacer}/>
                 <div 
                 className={classes.OptionBar}>
                     <div className={classes.DashboardIcon}>
-                        <ProjectIcon
-                        />
+                        <ProjectIcon/>
                     </div>
-                    <div className={classes.New} 
-                    onClick={props.newProjectHandler}>create</div>
+                    <div><strong>Projects</strong></div>
+                    <div className={classes.Spacer}/>
+                    <div 
+                    onClick={props.newProjectHandler}
+                    className={classes.Create}>
+                    Create</div>
                 </div>
                 
                 <div className={classes.ProjectsWrapper}>
-                <strong>Projects</strong>
-                <div className={classes.Pagination}>
-                {paginationComponent}</div>
-                <div className={classes.ComponentWrapper}>
-                    {component}
+                    <div className={classes.Pagination}>
+                    {paginationComponent}</div>
+                    <div className={classes.ComponentWrapper}>
+                        {component}
+                    </div>
                 </div>
-                </div>
-                
             </div>
             );
 };

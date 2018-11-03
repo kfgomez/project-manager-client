@@ -27,3 +27,8 @@
     cursor: pointer;
 }
 
+@media(min-width:800px){
+    .Main{
+        font-size: 13px;
+    }
+}

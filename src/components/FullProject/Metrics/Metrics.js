@@ -39,9 +39,9 @@ const metrics =(props)=>{
                 
                 <div className={classes.Card}>
                 <DumbbellIcon/>
-                <div style={{display: 'inline-block', fontSize: '15px'}}>
+                <div style={{display: 'inline-block', fontSize: '20px'}}>
                 {props.time_spent}min.</div>
-                <div>total effort invested</div>
+                <div>effort</div>
                 </div>
             </div>
         </div>

@@ -1,13 +1,23 @@
+.PaginationPanel{
+    width: 95px;
+    float: right;
+    margin-top: 15px;
+}
 .Round {
-    border-radius: 50%;
+    border-radius: 5px;
     border: none;
-    margin-left: 5px;
+    margin-left: 10px;
     background-color: #ddd;
     color: gray;
+    height: 25px;
+    width: 25px;
 }
+
 .PaginationPanel span{
     color: #2A3140;
-    margin-left: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
 }
 .Enabled:hover{
     background-color: #D93240;
@@ -16,4 +26,9 @@
 }
 .Enabled:focus{
     outline: none;
+}
+@media(min-width: 800px){
+    .PaginationPanel{
+        margin-top: 1%;
+    }
 }

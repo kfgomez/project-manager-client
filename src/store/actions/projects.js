@@ -76,7 +76,7 @@ export const newProject=()=>{
 };
 
 
-export const postProject=(token, data)=>{
+export const postProject=(token, data, page)=>{
     return dispatch=>{
         axios({
             url:'/projects',
@@ -87,7 +87,9 @@ export const postProject=(token, data)=>{
             },
             params:data
         }).then(res => {
-            dispatch(getProjects(token, res.data.id, 1));
+            dispatch(getProjectsLength(token));
+            dispatch(updateProjectData(res.data));
+            dispatch(getProjects(token, res.data.id, page));
         })
         .catch(err => {
             console.log(err, '[IN:Dashboard.js] line:27');

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actions/index.js';
 import BackdropPanel from '../../components/UI/BackdropPanel/BackdropPanel';
 import TasksActivitiesPanel from '../../components/TasksActivitiesPanel/TasksActivitiesPanel';
-
+import Backdrop from '../../components/UI/Backdrop/Backdrop';
 class Dashboard extends Component{
     state={
         showPanel: false, 
@@ -30,13 +30,17 @@ class Dashboard extends Component{
         });
         this.props.selectProject(id, project);
     }
+    cancelEditHandler=()=>{
+        this.props.selectProject(this.props.selectedProjectId, this.props.projectData);
+    }
     
     newProjectHandler=()=>{
+        this.resetTaskAction();
         this.props.newProject();
     }
     
     submitProjectHandler=(e, data)=>{
-        this.props.postProject(this.props.token, data);
+        this.props.postProject(this.props.token, data, this.props.currentPage);
         e.preventDefault();
     }
     
@@ -68,12 +72,10 @@ class Dashboard extends Component{
             showPanel: true,
             panelType: type
         });
-        this.props.showBackdropHandler();
     }
     
     closePanelHandler=()=>{
         this.setState({showPanel: false});
-        this.props.hideBackdropHandler();
         this.resetTaskAction();
     }
     
@@ -151,10 +153,15 @@ class Dashboard extends Component{
             panelData=activities;
         }
         if(this.state.showPanel){
-            backdropPanel=
+            backdropPanel=[
+            <Backdrop 
+            toggleBackdropHandler={this.closePanelHandler}
+            key="backdrop"/>,
             <BackdropPanel 
-            closePanelHandler={this.closePanelHandler}>
+            closePanelHandler={this.closePanelHandler}
+            key="backdropPanel">
             <TasksActivitiesPanel 
+            key="taskactivitypanel"
             panelData={panelData}
             panelType={this.state.panelType}
             projectTitle={projectData.title}
@@ -168,8 +175,9 @@ class Dashboard extends Component{
             resetTaskAction={this.resetTaskAction}
             deleteTaskHandler={this.deleteTaskHandler}
             />
-            </BackdropPanel>;
-        }
+            </BackdropPanel>
+                ];
+            }
 
         return(
             <div className={classes.Dashboard}>
@@ -187,7 +195,7 @@ class Dashboard extends Component{
             projectAction={this.props.projectAction}
             editProjectHandler={this.editProjectHandler}
             updateProjectHandler={this.updateProjectHandler}
-            selectProjectHandler={this.selectProjectHandler}
+            cancelEditHandler={this.cancelEditHandler}
             updateStatusHandler={this.updateStatusHandler}
             renderPanelDataHandler={this.renderPanelDataHandler}
             />
@@ -213,7 +221,7 @@ const mapDispatchToProps=(dispatch)=>{
         getProjects:(token, id, currentPage)=>dispatch(actionCreators.getProjects(token, id, currentPage)),
         selectProject:(id, projectData)=>dispatch(actionCreators.selectProject(id, projectData)),
         newProject: ()=>dispatch(actionCreators.newProject()),
-        postProject: (data, token)=>dispatch(actionCreators.postProject(data, token)),
+        postProject: (data, token, page)=>dispatch(actionCreators.postProject(data, token, page)),
         editProject: ()=>dispatch(actionCreators.editProject()),
         updateProject: (id, token, data, page)=>dispatch(actionCreators.updateProject(id, token, data, page)),
         getProjectsLength: (token)=>dispatch(actionCreators.getProjectsLength(token)),

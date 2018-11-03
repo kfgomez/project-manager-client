@@ -17,12 +17,27 @@ class Layout extends Component{
         showBackdrop: false, 
         showSideDrawer: false,}
     
-    hideBackdropHandler=()=>{
-        this.setState({showBackdrop:false});
+    hideSideDrawerHandler=()=>{
+        this.setState({
+            showBackdrop:false,
+            showSideDrawer: false,
+        });
     }
-    
+    showSideDrawerHandler=()=>{
+        this.setState({
+            showBackdrop: true,
+            showSideDrawer: true,
+        });
+    }
     showBackdropHandler=()=>{
-        this.setState({showBackdrop: true});
+        this.setState({
+            showBackdrop: true,
+        });
+    }
+    hideBackdropHandler=()=>{
+        this.setState({
+            showBackdropHandler: false,
+        });
     }
     
     loginHandler=(e, data)=>{
@@ -33,6 +48,7 @@ class Layout extends Component{
     logoutHandler=()=>{
         const confirmation = window.confirm("logout?");
         if (confirmation){
+            this.hideSideDrawerHandler();
             this.props.deauthenticateUser();
             return <Redirect to='/login' />;
         }else{
@@ -44,17 +60,21 @@ class Layout extends Component{
         let backdrop=null;
         let sideDrawer=null;
         if(this.state.showBackdrop){
-          backdrop = <Backdrop/>;
+          backdrop = <Backdrop
+          toggleBackdropHandler={this.hideSideDrawerHandler}/>;
         }
         if(this.state.showSideDrawer){
           sideDrawer=<SideDrawer 
-          show={this.state.showSideDrawer}/>;
+          show={this.state.showSideDrawer}
+          logoutHandler={this.logoutHandler}
+          auth={this.props.auth}/>;
         }
         return(
             <div className={classes.Layout}>
             <Toolbar 
             auth={this.props.auth}
             logoutHandler={this.logoutHandler}
+            showSideDrawerHandler={this.showSideDrawerHandler}
             />
             {backdrop}
             {sideDrawer}

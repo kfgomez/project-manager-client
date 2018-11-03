@@ -1,5 +1,7 @@
 import React from 'react';
 import ProjectForm from '../../../containers/ProjectForm/ProjectForm';
+import classes from './EditProject.css';
+
 const editProject=props=>{
     const inputElements=[{
         name: 'title',
@@ -35,13 +37,13 @@ const editProject=props=>{
         valid: true,
     }];
     return( 
-        <div>
+        <div className={classes.FormContainer}>
         <ProjectForm 
         type='edit'
         projectData={inputElements}
         id={props.projectData.id}
         updateProjectHandler={props.updateProjectHandler}
-        selectProjectHandler={props.selectProjectHandler}
+        cancelEditHandler={props.cancelEditHandler}
         />
         </div>
         );

@@ -24,7 +24,14 @@ const sideDrawer =(props)=>{
             exact to='/reports'>
             reports</NavLink></li>
             
-            <li>logout</li>
+            <li>
+            {props.auth
+                ? <span 
+                onClick={props.logoutHandler}>logout</span>
+                : <NavLink 
+                activeStyle={{fontWeight: 'bold'}}
+                exact to="/login">login</NavLink>
+            }</li>
         </ul>
     </div>);
     };
