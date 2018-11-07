@@ -61,25 +61,23 @@ class TaskForm extends Component{
         this.props.resetTaskAction();
     }
     render(){
+        const disabled=Object.values({
+            description: this.state.description,
+            difficulty: this.state.difficulty,
+            source: this.state.source,
+        }).some(el=>el==='');
         let cancel=null;
         if (this.state.formType==='edit'){
             cancel=
-            <button 
-            type="cancel"
-            onClick={this.cancelEditTaskHandler}>
-            Cancel</button>;
+            <div className={classes.CancelWrapper}>
+            <div 
+            className={classes.Cancel}
+            onClick={this.cancelEditTaskHandler}>cancel</div>
+            </div>;
         }
         return(
             <div className={classes.FormPanel}>
             <form onSubmit={(e, state)=>this.submitFormHandler(e, this.state)}>
-                    <textarea 
-                    rows="3" 
-                    cols="32" 
-                    placeholder="description"
-                    value={this.state.description}
-                    onChange={this.changeHandler}
-                    name="description"/>
-                    
                     <input 
                     type="text" 
                     placeholder="source"
@@ -94,13 +92,25 @@ class TaskForm extends Component{
                     onChange={(e)=>this.changeHandler(e)}
                     name="difficulty"/>
                     
+                    <textarea 
+                    rows="3" 
+                    cols="32" 
+                    placeholder="description"
+                    value={this.state.description}
+                    onChange={this.changeHandler}
+                    name="description"/>
+                    
                     <input 
-                    type="submit" 
+                    type="submit"
+                    disabled={disabled}
                     value={this.state.formType ==='new'
                         ? "add"
                         : "save"
                     }
-                    className={classes.SubmitButton}/>
+                    className={disabled
+                        ? classes.Disabled
+                        : classes.SubmitButton
+                    }/>
                 </form>
                 {cancel}
             </div>

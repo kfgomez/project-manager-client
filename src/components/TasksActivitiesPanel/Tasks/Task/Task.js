@@ -31,7 +31,7 @@ const task=(props)=>{
         upateTaskHandler={props.updateTaskHandler}
         id={taskData.id}/>
         </td>
-        <td>
+        <td className={classes.EditDelete}>
         <span 
         onClick={(data)=>props.selectTaskHandler(taskData)}
         >Edit</span> <span

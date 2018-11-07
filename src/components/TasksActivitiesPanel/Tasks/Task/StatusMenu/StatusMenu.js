@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import classes from './StatusMenu.css';
 
 class StatusMenu extends Component{
     state={
@@ -30,7 +30,8 @@ class StatusMenu extends Component{
         return(
         <select
         value={this.props.value}
-        onChange={this.changeHandler}>
+        onChange={this.changeHandler}
+        className={classes.DropDownMenu}>
         {optionsElements}
         </select>
         );

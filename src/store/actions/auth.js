@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
 import Auth from '../../modules/Auth';
+import { setErrorTrue } from './ui';
 
 export const isUserAuthenticated = ()=>{
     return{
@@ -25,9 +26,9 @@ export const deauthenticateUser = ()=>{
                     "Authorization": `Token ${token}`,
                     "Content-Type": "application/json"}
             }).then(res =>{
-                window.alert('logged out')
+                window.alert('logged out');
                 dispatch(logout());
-            }).catch(err => console.log(err)
+            }).catch(err => dispatch(setErrorTrue(err))
         );
     };
 };
@@ -41,7 +42,7 @@ export const authenticateUser = (data)=>{
             dispatch(isUserAuthenticated());
         })
         .catch(err=>{
-            window.alert('unable to authenticate', err);
+            dispatch(setErrorTrue(err));
         });
     };
 };

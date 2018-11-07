@@ -23,3 +23,10 @@ export {
     postTask,
     deleteTask
 } from './tasks';
+
+export {
+    setLoadingTrue,
+    setLoadingFalse,
+    setErrorFalse,
+    setErrorTrue,
+} from './ui';

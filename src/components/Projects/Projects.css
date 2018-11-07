@@ -25,6 +25,10 @@
     background-color: #D93240;
     padding: 7px;
 }
+.Create:hover{
+    background-color: #b6222e;
+    cursor: pointer;
+}
 .DashboardIcon{
     padding: 0px;
     height: 40px;
@@ -83,6 +87,7 @@
     }
     .OptionBar{
         height: 10%;
+        max-height: 70px;
     }
     .Create{
         padding: 3px;

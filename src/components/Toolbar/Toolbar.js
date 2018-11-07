@@ -15,7 +15,7 @@ const toolbar =(props)=>{
             </h3>
             <div className={classes.Spacer}/>
             <div className={classes.NavigationItems}>
-                <ul>
+                <ul>{/*
                     <li><NavLink 
                     activeStyle={{fontWeight: 'bold'}} 
                     exact to='/reports'>
@@ -23,13 +23,12 @@ const toolbar =(props)=>{
                     
                     <li><NavLink 
                     activeStyle={{fontWeight: 'bold'}} 
-                    exact to='/dashboard'>
-                    dashboard</NavLink></li>
-                    
+                    exact to='/account'>account</NavLink></li>
+                    */}
                     <li><NavLink 
                     activeStyle={{fontWeight: 'bold'}} 
-                    exact to='/account'>account</NavLink></li>
-                    
+                    exact to='/dashboard'>
+                    dashboard</NavLink></li>
                     {
                     props.auth
                     ?<li><div

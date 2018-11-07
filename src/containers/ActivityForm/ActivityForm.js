@@ -23,6 +23,10 @@ class ActivityForm extends Component{
         
     }
     render(){
+        const disabled=Object.values({
+            description: this.state.description,
+            time_spent: this.state.difficulty,
+        }).some(el=>el==='');
         return(
             <div className={classes.FormPanel}>
                 <form onSubmit={(e, state)=>this.submitFormHandler(e, this.state)}>
@@ -39,8 +43,13 @@ class ActivityForm extends Component{
                     value={this.state.time_spent}
                     onChange={(e)=>this.changeHandler(e)}
                     name="time_spent"/>
-                    <input type="submit" value="add"
-                    className={classes.SubmitButton}/>
+                    <input type="submit" 
+                    disabled={disabled}
+                    value="add"
+                    className={disabled
+                        ?classes.Disabled
+                        :classes.SubmitButton
+                    }/>
                 </form>
             </div>
             );

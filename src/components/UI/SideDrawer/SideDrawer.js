@@ -10,19 +10,19 @@ const sideDrawer =(props)=>{
     return(
     <div className={sideDrawerClasses}>
         <ul>
+            {/*
             <li><NavLink 
             activeStyle={{fontWeight: 'bold'}} 
             exact to='/account'>account</NavLink></li>
-            
-            <li><NavLink 
-            activeStyle={{fontWeight: 'bold'}} 
-            exact to='/dashboard'>
-            dashboard</NavLink></li>
-            
             <li><NavLink 
             activeStyle={{fontWeight: 'bold'}} 
             exact to='/reports'>
             reports</NavLink></li>
+            */}
+            <li><NavLink 
+            activeStyle={{fontWeight: 'bold'}} 
+            exact to='/dashboard'>
+            dashboard</NavLink></li>
             
             <li>
             {props.auth

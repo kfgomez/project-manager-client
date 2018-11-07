@@ -1,0 +1,35 @@
+.ErrorWrapper{
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    z-index: 200;
+    text-align: center;
+    background-color: white;
+    margin-top: 25%;
+    margin-left: 25%;
+    padding-top: 8%;
+    box-sizing: border-box;
+    min-height: 250px;
+}
+.ErrorWrapper h3,.ErrorWrapper p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.OK{
+    margin-top: 150px;
+    background-color: blue;
+    width: 50px;
+    margin: auto;
+    padding: 8px;
+    color: white;
+    
+}
+.OK:hover{
+    background-color: darkBlue;
+    cursor: pointer;
+}
+@media(min-width: 769px){
+    .ErrorWrapper{
+        margin-top: 15%;
+    }
+}

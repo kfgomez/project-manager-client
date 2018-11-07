@@ -11,7 +11,7 @@ const activities=(props)=>{
             );
     });
     return(
-        <div className={classes.Main}>
+        <div className={classes.ActivitiesPanel}>
         <h2 className={classes.Title}>Activities</h2>
         <div className={classes.TableWrapper}>
         <table className={classes.Table}>

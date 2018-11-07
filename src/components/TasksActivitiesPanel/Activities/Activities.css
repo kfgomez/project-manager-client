@@ -1,34 +1,54 @@
-.TableWrapper{
-    width: 99%;
-    height: 250px;
-    overflow: auto; 
+.ActivitiesPanel{
+    height: 350px; 
+    width: 100%;
 }
-.Table{
-    margin: auto;
-    width: 90%;
-    border-collapse: collapse;
+.Title{
+    text-align: center;
+    height: 50px;
+    font-size: 25px;
+    margin-top: 20px;
+    color: #D93240;
+}
+.TableWrapper{
+    height: 250px;
+    overflow: auto;
+    margin: 2px;
+    background-color: #F8F8F8;
 }
 .Table td, th {
     text-align: left;
     padding: 9px;
 }
-
 .Table tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #d8dbe4;
 }
-
 .HeadElements{
     background-color: #2A3140;
     color: white;
 }
-
-.Title{
-    text-align: center;
-    color: #D93240;
+.Table{
+    min-width:600px;
+    max-height: 240px;
+    font-size: 15px;
+    border-collapse: collapse;
+    background-color: white;
 }
-
-.SubmitButton{
-    color: white;
-    border: none;
-    background-color:#D93240;
+@media(min-width: 769px){
+    .ActivitiesPanel{
+        height: 60%;
+    }
+    .TableWrapper{
+        height: 80%;
+        overflow: auto;
+        margin: 2px;
+    }
+    .Title{
+        height: 10%;
+        margin-top: 25px;
+    }
+    .Table{
+        max-width: 800px;
+        margin: auto;
+        margin-top: 5px;
+    }
 }

@@ -15,7 +15,7 @@ const tasks=(props)=>{
             );
     });
     return(
-        <div>
+        <div className={classes.TasksPanel}>
         <h2 className={classes.Title}>Tasks</h2>
         <div className={classes.TableWrapper}>
         <table className={classes.Table}>

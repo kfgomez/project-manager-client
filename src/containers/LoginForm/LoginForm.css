@@ -9,3 +9,7 @@
     border: none !important;
     color: white;
 }
+.SubmitInput:hover{
+    background-color: red;
+    cursor: pointer;
+}

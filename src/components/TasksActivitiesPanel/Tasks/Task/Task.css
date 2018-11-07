@@ -2,5 +2,14 @@
     cursor: pointer;
 }
 .DataRow span{
-    color: rgba(0,0,256,0.85);
+    color: rgba(0,0,256,0.75);
+}
+.EditDelete{
+    width: 70px;
+}
+.DataRow{
+    font-size: 12px;
+}
+.DataRow{
+    height: 5%;
 }

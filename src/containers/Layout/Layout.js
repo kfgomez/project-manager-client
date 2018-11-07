@@ -7,15 +7,17 @@ import * as actionCreators from '../../store/actions/index.js';
 
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
 import SideDrawer from '../../components/UI/SideDrawer/SideDrawer';
-
+import Spinner from '../../components/UI/Spinner/Spinner';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import Login from '../../components/Login/Login';
 import Dashboard from '../../containers/Dashboard/Dashboard';
+import Error from '../../components/UI/Error/Error';
 
 class Layout extends Component{
     state={
         showBackdrop: false, 
-        showSideDrawer: false,}
+        showSideDrawer: false,
+    }
     
     hideSideDrawerHandler=()=>{
         this.setState({
@@ -55,10 +57,11 @@ class Layout extends Component{
             return;
         }
     }
-    
     render(){
+        let loading=null;
         let backdrop=null;
         let sideDrawer=null;
+        let error=null;
         if(this.state.showBackdrop){
           backdrop = <Backdrop
           toggleBackdropHandler={this.hideSideDrawerHandler}/>;
@@ -69,6 +72,14 @@ class Layout extends Component{
           logoutHandler={this.logoutHandler}
           auth={this.props.auth}/>;
         }
+        if(this.props.loading){
+            loading=<Spinner />;
+        }
+        if(this.props.error){
+            error=<Error 
+            clicked={this.props.setErrorFalse}
+            error={this.props.errorMessage}/>;
+        }
         return(
             <div className={classes.Layout}>
             <Toolbar 
@@ -76,8 +87,10 @@ class Layout extends Component{
             logoutHandler={this.logoutHandler}
             showSideDrawerHandler={this.showSideDrawerHandler}
             />
+            {loading}
             {backdrop}
             {sideDrawer}
+            {error}
             <Route exact path='/'
             render={()=>(<Redirect to='/login'/>)}/>
             <Route exact path='/login' 
@@ -105,7 +118,10 @@ class Layout extends Component{
 const mapStateToProps = (state)=>{
     return{
         auth: state.auth.isUserAuthenticated,
-        token: state.auth.token
+        token: state.auth.token,
+        loading: state.ui.loading,
+        error: state.ui.error,
+        errorMessage: state.ui.errorMessage,
     };
 };
 
@@ -113,7 +129,8 @@ const mapDispatchToProps = (dispatch)=>{
     return{
         isUserAuthenticated: ()=>dispatch(actionCreators.isUserAuthenticated()),
         deauthenticateUser: ()=>dispatch(actionCreators.deauthenticateUser()),
-        authenticateUser: (data)=>dispatch(actionCreators.authenticateUser(data))
+        authenticateUser: (data)=>dispatch(actionCreators.authenticateUser(data)),
+        setErrorFalse: ()=>dispatch(actionCreators.setErrorFalse()),
     };
 };
 

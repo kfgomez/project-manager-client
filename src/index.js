@@ -11,6 +11,8 @@ import { Provider } from 'react-redux';
 
 import authReducer from './store/reducers/auth';
 import projectsReducer from './store/reducers/projects';
+import uiReducer from './store/reducers/ui';
+
 import thunk from 'redux-thunk';
 
 axios.defaults.baseURL="https://rc-projects-kev9504.c9users.io:8081";
@@ -18,6 +20,7 @@ axios.defaults.baseURL="https://rc-projects-kev9504.c9users.io:8081";
 const rootReducer = combineReducers({
     auth: authReducer,
     projects: projectsReducer,
+    ui: uiReducer,
 });
 
 const logger = store =>{

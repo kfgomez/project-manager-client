@@ -1,6 +1,8 @@
 import {getProjects, getProject} from './projects';
 import axios from 'axios';
-
+import {
+    setErrorTrue
+} from './ui';
 export const postActivity=(projectId, token, data, page)=>{
     return dispatch=>{
         axios({
@@ -16,7 +18,7 @@ export const postActivity=(projectId, token, data, page)=>{
                 dispatch(getProjects(token, projectId, page));
             })
             .catch(err=>{
-                window.alert(err);
+                dispatch(setErrorTrue(err));
             });
     };
 };

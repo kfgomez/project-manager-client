@@ -1,5 +1,10 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {
+    setLoadingTrue,
+    setLoadingFalse,
+    setErrorTrue,
+} from './ui';
 
 export const getProjectsData = (projectsArray, selectedProject,page)=>{
     return{
@@ -22,7 +27,8 @@ export const projectsLength=(len)=>{
 };
 
 export const getProjectsLength=(token)=>{
-    return dispatch=>axios({
+    return dispatch=>
+        axios({
         url:'/projects/projects_length',
         method: 'get',
         headers:{
@@ -32,12 +38,13 @@ export const getProjectsLength=(token)=>{
     }).then(res=>{
         dispatch(projectsLength(res.data));
     }).catch(err=>{
-        window.alert(err);
+        dispatch(setErrorTrue(err));
     });
 };
 
 export const getProjects =(token, selectedProjectId, currentPage)=>{
     return dispatch=>{
+        dispatch(setLoadingTrue());
         axios({
             url:'/projects',
             method: 'get',
@@ -51,10 +58,11 @@ export const getProjects =(token, selectedProjectId, currentPage)=>{
                 res.data, 
                 selectedProjectId,
                 currentPage));
+            dispatch(setLoadingFalse());
         })
         .catch(err => {
-            console.log(err, '[IN:Dashboard.js] line:27');
-            window.alert(`Error while getting data, ${err}`);
+            dispatch(setErrorTrue(err));
+            dispatch(setLoadingFalse);
         });
     };
 };
@@ -93,7 +101,7 @@ export const postProject=(token, data, page)=>{
         })
         .catch(err => {
             console.log(err, '[IN:Dashboard.js] line:27');
-            window.alert(`Error while saving project, ${err}`);
+            dispatch(setErrorTrue(err));
         });
     };
 };
@@ -109,7 +117,7 @@ export const getProject=(token, id)=>{
         }).then(res=>{
             dispatch(updateProjectData(res.data));
         }).catch(err=>{
-            window.alert(err);
+            dispatch(setErrorTrue(err));
         });
     };
 };
@@ -128,7 +136,7 @@ export const updateProject=(id, token, data, page)=>{
             dispatch(getProjects(token, id, page));
         }).catch(err=>{
             console.log(err, '[updateProject]');
-            window.alert(`Error while updating project, ${err}`);
+            dispatch(setErrorTrue(err));
         });
     };
 };

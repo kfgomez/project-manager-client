@@ -7,6 +7,8 @@ import * as actionCreators from '../../store/actions/index.js';
 import BackdropPanel from '../../components/UI/BackdropPanel/BackdropPanel';
 import TasksActivitiesPanel from '../../components/TasksActivitiesPanel/TasksActivitiesPanel';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
+
+
 class Dashboard extends Component{
     state={
         showPanel: false, 
@@ -178,6 +180,7 @@ class Dashboard extends Component{
             </BackdropPanel>
                 ];
             }
+        
 
         return(
             <div className={classes.Dashboard}>
