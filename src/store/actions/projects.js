@@ -155,3 +155,9 @@ export const editProject=()=>{
         type: actionTypes.EDIT_PROJECT,
     };
 };
+
+export const resetProjects=()=>{
+    return{
+        type: actionTypes.RESET_PROJECTS,
+    };
+};

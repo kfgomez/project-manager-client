@@ -12,6 +12,7 @@ export {
     editProject,
     updateProject,
     getProjectsLength,
+    resetProjects,
 } from './projects';
 
 export {
