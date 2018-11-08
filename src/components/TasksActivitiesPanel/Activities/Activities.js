@@ -17,10 +17,10 @@ const activities=(props)=>{
         <table className={classes.Table}>
         <tbody>
             <tr className={classes.HeadElements}>
-            <th>created_at</th>
             <th>description</th>
-            <th>time spent min.</th>
             <th>user</th>
+            <th>time spent min.</th>
+            <th>created_at</th>
             </tr>
             {activities}
         </tbody>

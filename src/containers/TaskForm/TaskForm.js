@@ -78,6 +78,14 @@ class TaskForm extends Component{
         return(
             <div className={classes.FormPanel}>
             <form onSubmit={(e, state)=>this.submitFormHandler(e, this.state)}>
+                    <textarea 
+                    rows="3" 
+                    cols="32" 
+                    placeholder="description"
+                    value={this.state.description}
+                    onChange={this.changeHandler}
+                    name="description"/>
+                    
                     <input 
                     type="text" 
                     placeholder="source"
@@ -91,14 +99,6 @@ class TaskForm extends Component{
                     value={this.state.difficulty}
                     onChange={(e)=>this.changeHandler(e)}
                     name="difficulty"/>
-                    
-                    <textarea 
-                    rows="3" 
-                    cols="32" 
-                    placeholder="description"
-                    value={this.state.description}
-                    onChange={this.changeHandler}
-                    name="description"/>
                     
                     <input 
                     type="submit"

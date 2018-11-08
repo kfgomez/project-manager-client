@@ -11,17 +11,16 @@ const metrics =(props)=>{
             <div 
             className={classes.MetricsPanel}>
                 <div className={`${classes.Card} ${classes.Selectable}`}
-                onClick={(e, type)=>props.renderPanelDataHandler(e, 'tasks')}>
-                <TaskIcon/>
-                <div style={{display: 'inline-block', fontSize: '20px'}}>{props.totalTasks}</div>
-                <div>Tasks</div>
-                </div>
-                
-                <div className={`${classes.Card} ${classes.Selectable}`}
                 onClick={(e, type)=>props.renderPanelDataHandler(e, 'activities')}>
                 <ActivityIcon/>
                 <div style={{display: 'inline-block', fontSize: '20px'}}>{props.totalActivities}</div>
                 <div>activities</div>
+                </div>
+                <div className={`${classes.Card} ${classes.Selectable}`}
+                onClick={(e, type)=>props.renderPanelDataHandler(e, 'tasks')}>
+                <TaskIcon/>
+                <div style={{display: 'inline-block', fontSize: '20px'}}>{props.totalTasks}</div>
+                <div>Tasks</div>
                 </div>
             </div>
             <div className={classes.MetricsPanel}>

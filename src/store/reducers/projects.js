@@ -55,6 +55,16 @@ const reducer = (state=initalState, action)=>{
                     ...action.payload.updatedProject,
                 }
             };
+        case actionType.RESET_PROJECTS:
+            return{
+                ...state,
+                projects:[],
+                selectedProjectId: 0,
+                projectAction: 'new',
+                pages: 0,
+                currentPage:1,
+                projectData: null,
+            };
         default:
         return{
             ...state,

@@ -8,11 +8,11 @@ const activity=props=>{
     return(
         <tr>
             <td>
-            {newDate.toString().slice(0, 25)}
+            {props.activity.description}
             </td>
             
             <td>
-            {props.activity.description}
+            {props.activity.username}
             </td>
             
             <td>
@@ -20,7 +20,7 @@ const activity=props=>{
             </td>
             
             <td>
-            {props.activity.username}
+            {newDate.toString().slice(0, 25)}
             </td>
         </tr>
         );
