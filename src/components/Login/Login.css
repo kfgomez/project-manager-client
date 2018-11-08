@@ -1,9 +1,23 @@
-.login_panel{
+.LoginPanel{
+    width: 400px;
     background-color: white;
-    height: 250px;
     margin: auto;
-    width: 50%;
+    height: 250px;
+    margin-top: 30%;
+}
+.ToolbarSpacer{
+    height: 36px;
+    width: 100%;
+}
+.LoginWrapper{
     text-align: center;
-    margin-top: 50px;
-    padding-top: 10px;
+}
+.LoginWrapper h1{
+    margin-bottom: 10px; 
+    color: #2A3140;
+}
+@media(min-width: 769px){
+    .LoginPanel{
+        margin-top: 10%;
+    }
 }

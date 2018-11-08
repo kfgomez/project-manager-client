@@ -26,7 +26,6 @@ class Form extends Component{
         <div className={classes.Form}>
         <form onSubmit={(e, data)=>this.props.loginHandler(e, this.state)}>
         <input 
-        className={classes.EmailInput}
         type="email" 
         name="email" 
         value={this.state.email}
@@ -34,7 +33,6 @@ class Form extends Component{
         onChange={(e)=>this.changeHandler(e)}/>
         <br/>
         <input 
-        className={classes.PasswordInput}
         type="password" 
         name="password" 
         value={this.state.password}
@@ -42,7 +40,7 @@ class Form extends Component{
         onChange={(e)=>this.changeHandler(e)}/>
         <br/>
         <input 
-        className={buttonClasses}
+        className={classes.SubmitButton}
         type="submit" value="login"
         disabled={disabled}/>
         </form>

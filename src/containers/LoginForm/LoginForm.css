@@ -1,15 +1,11 @@
 .Form input{
+    width: 70%;
+    height: 30px;
     margin-top: 10px;
-    border: 1px #2A3140 solid;
-    padding:5px; 
 }
-
-.SubmitInput{
-    background-color: #D93240;
-    border: none !important;
+.SubmitButton{
     color: white;
-}
-.SubmitInput:hover{
-    background-color: red;
-    cursor: pointer;
+    border: none;
+    background-color:#D93240;
+    font-size: 14px;
 }

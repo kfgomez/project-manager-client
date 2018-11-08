@@ -37,6 +37,9 @@
     height: 30px;
     margin-top: 10px;
 }
+.Cancel:hover{
+    background-color: red;
+}
 @media(min-width:769px){
     .FormPanel{
         height: 50%;

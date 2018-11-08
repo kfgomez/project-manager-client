@@ -91,13 +91,13 @@
 }
 
 
-@media(max-width: 769px){
+@media(max-width: 768px){
     .NavigationItems{
         display: none;
     }
 }
 
-@media(min-width: 768px){
+@media(min-width: 769px){
     .DrawerToggleButton{
         display: none;
     }
