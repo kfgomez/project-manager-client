@@ -15,7 +15,7 @@ import uiReducer from './store/reducers/ui';
 
 import thunk from 'redux-thunk';
 
-axios.defaults.baseURL="https://rc-projects-kev9504.c9users.io:8081";
+axios.defaults.baseURL="https://api.redcarats.com";
 
 const rootReducer = combineReducers({
     auth: authReducer,
