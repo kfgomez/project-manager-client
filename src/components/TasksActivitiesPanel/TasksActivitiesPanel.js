@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './TasksActivitiesPanel.css';
 import Tasks from './Tasks/Tasks';
 import Activities from './Activities/Activities';
-
 const tasksActivitiesPanel=(props)=>{
     let component;
     switch (props.panelType) {

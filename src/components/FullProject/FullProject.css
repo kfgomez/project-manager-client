@@ -103,6 +103,7 @@
         box-sizing: border-box;
         overflow: auto;
         min-height: 450px;
+        max-height: 800px;
     }
     .ProjectTitle{
         font-size: 15px;

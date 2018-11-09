@@ -1,19 +1,23 @@
 .SpinnerWrapper{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 200;
-    text-align: center;
-    
+  position: fixed;
+  z-index: 600;
+  height: 71px;
+  width: 71px;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 .ldsHourglass {
   display: inline-block;
-  position: relative;
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
   background-color: white;
-  margin-top: 25%;
-  box-shadow: #D3D3D3 1px 1px 5px 1px;
+  box-shadow: #A9A9A9 0.5px 0.5px 1px 0px;
 }
 .ldsHourglass:after {
   content: " ";

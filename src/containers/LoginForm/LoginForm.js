@@ -17,10 +17,8 @@ class Form extends Component{
 
     render(){
         let disabled = false;
-        let buttonClasses=classes.SubmitInput;
         if (this.state.email === '' || this.state.password === ''){
             disabled=true;
-            buttonClasses=[classes.SubmitInput, classes.Disabled].join('');
         }
         return(
         <div className={classes.Form}>

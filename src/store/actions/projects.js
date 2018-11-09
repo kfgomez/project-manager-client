@@ -61,8 +61,7 @@ export const getProjects =(token, selectedProjectId, currentPage)=>{
             dispatch(setLoadingFalse());
         })
         .catch(err => {
-            dispatch(setErrorTrue(err));
-            dispatch(setLoadingFalse);
+            dispatch(setErrorTrue(err, 'Please try again later'));
         });
     };
 };
@@ -86,6 +85,7 @@ export const newProject=()=>{
 
 export const postProject=(token, data, page)=>{
     return dispatch=>{
+        dispatch(setLoadingTrue());
         axios({
             url:'/projects',
             method: 'post',
@@ -100,13 +100,13 @@ export const postProject=(token, data, page)=>{
             dispatch(getProjects(token, res.data.id, page));
         })
         .catch(err => {
-            console.log(err, '[IN:Dashboard.js] line:27');
             dispatch(setErrorTrue(err));
         });
     };
 };
 export const getProject=(token, id)=>{
     return dispatch=>{
+        dispatch(setLoadingTrue());
         axios({
             url:`/projects/${id}`,
             method: 'get',
@@ -123,6 +123,7 @@ export const getProject=(token, id)=>{
 };
 export const updateProject=(id, token, data, page)=>{
     return dispatch=>{
+        dispatch(setLoadingTrue());
         axios({
             url: `/projects/${id}`,
             method: 'put',
@@ -135,7 +136,6 @@ export const updateProject=(id, token, data, page)=>{
             dispatch(updateProjectData(res.data));
             dispatch(getProjects(token, id, page));
         }).catch(err=>{
-            console.log(err, '[updateProject]');
             dispatch(setErrorTrue(err));
         });
     };

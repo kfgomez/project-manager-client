@@ -12,11 +12,12 @@ export const setLoadingFalse=()=>{
     };
 };
 
-export const setErrorTrue=(error)=>{
+export const setErrorTrue=(error, nextStep)=>{
     return{
         type: actionTypes.SET_ERROR_TRUE,
         payload:{
             error: error,
+            nextStep: nextStep
         }
     };
 };

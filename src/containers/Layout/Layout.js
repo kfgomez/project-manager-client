@@ -78,7 +78,8 @@ class Layout extends Component{
         if(this.props.error){
             error=<Error 
             clicked={this.props.setErrorFalse}
-            error={this.props.errorMessage}/>;
+            error={this.props.errorMessage}
+            nextStep={this.props.nextStep}/>;
         }
         return(
             <div className={classes.Layout}>
@@ -122,6 +123,7 @@ const mapStateToProps = (state)=>{
         loading: state.ui.loading,
         error: state.ui.error,
         errorMessage: state.ui.errorMessage,
+        nextStep: state.ui.nextStep,
     };
 };
 

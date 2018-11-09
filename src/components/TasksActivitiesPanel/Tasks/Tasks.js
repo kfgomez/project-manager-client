@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './Tasks.css';
 import Task from './Task/Task';
 import TaskForm from '../../../containers/TaskForm/TaskForm';

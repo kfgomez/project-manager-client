@@ -3,9 +3,10 @@ import classes from './Spinner.css';
 
 const spinner=()=>{
     return(
-    <div className={classes.SpinnerWrapper}>
-        <div className={classes.ldsHourglass}></div>
-    </div>
+        <div className={classes.SpinnerWrapper}>
+            <div className={classes.ldsHourglass}></div>
+        </div>
+        
     );
 };
 

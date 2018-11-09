@@ -4,6 +4,7 @@ const initialState={
     loading: false,
     error: false,
     errorMessage: '',
+    nextStep: '',
 };
 
 const reducer=(state=initialState, action)=>{
@@ -22,7 +23,8 @@ const reducer=(state=initialState, action)=>{
             return{
                 ...state,
                 error: true,
-                errorMessage: action.payload.error
+                errorMessage: action.payload.error,
+                nextStep: action.payload.nextStep,
             };
         case actionType.SET_ERROR_FALSE:
             return{
