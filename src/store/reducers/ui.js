@@ -25,6 +25,7 @@ const reducer=(state=initialState, action)=>{
                 error: true,
                 errorMessage: action.payload.error,
                 nextStep: action.payload.nextStep,
+                loading: false
             };
         case actionType.SET_ERROR_FALSE:
             return{

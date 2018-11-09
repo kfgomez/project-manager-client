@@ -9,3 +9,9 @@
     background-color:#D93240;
     font-size: 14px;
 }
+.Disabled{
+    color: white;
+    border: none;
+    background-color:gray;
+    font-size: 14px;
+}

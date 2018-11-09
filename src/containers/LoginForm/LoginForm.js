@@ -38,7 +38,10 @@ class Form extends Component{
         onChange={(e)=>this.changeHandler(e)}/>
         <br/>
         <input 
-        className={classes.SubmitButton}
+        className={disabled
+            ?classes.Disabled
+            :classes.SubmitButton
+        }
         type="submit" value="login"
         disabled={disabled}/>
         </form>
