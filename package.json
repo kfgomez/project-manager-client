@@ -26,7 +26,6 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
-    "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -99,6 +98,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^2.29.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   }
